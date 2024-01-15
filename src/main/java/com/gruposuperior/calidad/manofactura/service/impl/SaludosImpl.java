@@ -17,9 +17,8 @@ public class SaludosImpl implements Saludos {
         Optional<Turno> optionalTurno = turnoRepository.findById(1);
         if(optionalTurno.isPresent()) {
             System.out.println(optionalTurno.get().getDescripcion());
-            throw new RuntimeException("Message from etc");
         }
 
-        return "Hola tu babosa" + turnoRepository.count();
+        return "Hola tu babosa" + " " +turnoRepository.count();
     }
 }

@@ -14,7 +14,7 @@ public class Turno implements Serializable {
     @Serial
     private static final long serialVersionUID = 5059182445795391715L;
     @Id
-    @Column(name = "id_turnos")
+    @Column(name = "id_turno")
     private int idTurno;
     @Column
     private String descripcion;
