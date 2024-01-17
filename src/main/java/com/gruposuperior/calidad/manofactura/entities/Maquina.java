@@ -16,12 +16,12 @@ import jakarta.persistence.TemporalType;
 
 
 /**
- * The persistent class for the "turno" database table.
+ * The persistent class for the "maquina" database table.
  * 
  */
 @Entity
-@Table(name = "turno")
-public class Turno implements Serializable {
+@Table(name="maquina")
+public class Maquina implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -44,14 +44,14 @@ public class Turno implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@OneToMany(mappedBy="turno")
+	@OneToMany(mappedBy="maquina")
 	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
 
 	//bi-directional many-to-one association to ControlProductoCabecera
-	@OneToMany(mappedBy="turno")
+	@OneToMany(mappedBy="maquina")
 	private List<ControlProductoCabecera> controlProductoCabeceras;
 
-	public Turno() {
+	public Maquina() {
 	}
 
 	public int getId() {
@@ -104,14 +104,14 @@ public class Turno implements Serializable {
 
 	public ControlEmpaqueCabecera addControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
 		getControlEmpaqueCabeceras().add(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(this);
+		controlEmpaqueCabecera.setMaquina(this);
 
 		return controlEmpaqueCabecera;
 	}
 
 	public ControlEmpaqueCabecera removeControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
 		getControlEmpaqueCabeceras().remove(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(null);
+		controlEmpaqueCabecera.setMaquina(null);
 
 		return controlEmpaqueCabecera;
 	}
@@ -126,14 +126,14 @@ public class Turno implements Serializable {
 
 	public ControlProductoCabecera addControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		getControlProductoCabeceras().add(controlProductoCabecera);
-		controlProductoCabecera.setTurno(this);
+		controlProductoCabecera.setMaquina(this);
 
 		return controlProductoCabecera;
 	}
 
 	public ControlProductoCabecera removeControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		getControlProductoCabeceras().remove(controlProductoCabecera);
-		controlProductoCabecera.setTurno(null);
+		controlProductoCabecera.setMaquina(null);
 
 		return controlProductoCabecera;
 	}

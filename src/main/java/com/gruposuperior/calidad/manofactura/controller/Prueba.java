@@ -1,25 +1,25 @@
 package com.gruposuperior.calidad.manofactura.controller;
 
-import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
-import com.gruposuperior.calidad.manofactura.service.Saludos;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
+import com.gruposuperior.calidad.manofactura.service.Saludos;
 
 @RestController
 @RequestMapping(value = "/babosa")
 public class Prueba {
     @Autowired
     private Saludos saludos;
-    @GetMapping(value = "saluda")
-    public String saludar(){
-        return saludos.hola();
+    @PostMapping(value = "saluda")
+    public String saludar(@RequestBody String nombre){
+        return "hola " + nombre;
     }
 
     @GetMapping(value = "demo")

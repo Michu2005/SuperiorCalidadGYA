@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: password$2024
+      ACCEPT_EULA: Y
+    ports:
+      - "1433:1433"
+    # networks:
+    #   - app-network
+    volumes:
+      - ./database/data:/var/opt/mssql
+      - ./database/init:/docker-entrypoint-initdb.d # Mount SQL scripts directory
+      - ./database/entrypoint.sh:/usr/src/app/entrypoint.sh  # Mount custom entrypoint script
+    command: ["/bin/bash", "/usr/src/app/entrypoint.sh"]  # Specify the custom entrypoint script
+
+  # spring-app:
+  #   image: your-spring-app-image:latest
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:sqlserver://sql-server:1433;databaseName=YourDatabaseName
+  #     SPRING_DATASOURCE_USERNAME: YourDatabaseUser
+  #     SPRING_DATASOURCE_PASSWORD: YourDatabasePassword
+  #   depends_on:
+  #     - sql-server
+  #   networks:
+  #     - app-network
+
+# networks:
+#   app-network:
+#     driver: bridge
+
+# volumes:
+#   sql-server-data:
+#     driver: local

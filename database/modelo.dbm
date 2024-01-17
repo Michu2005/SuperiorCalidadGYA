@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.0.1" use-changelog="false" last-position="201,273" last-zoom="1" max-obj-count="22"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="turno" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1380" y="40"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="turno_pk" type="pk-constr" table="public.turno">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="linea" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1380" y="240"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="linea_pk" type="pk-constr" table="public.linea">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="maquina" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1380" y="460"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="maquina_pk" type="pk-constr" table="public.maquina">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfil" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="140" y="0"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="perfil_pk" type="pk-constr" table="public.perfil">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="empleado" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="460" y="20"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="codigo">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="nombre">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="empleado_pk" type="pk-constr" table="public.empleado">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="parametro" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="100" y="860"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="min">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="max">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<column name="unidad_medida">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="valor_unico">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="categoria_producto_pk" type="pk-constr" table="public.parametro">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_tipo_parametro" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="tipo_parametro_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="producto" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="160" y="460"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="codigo">
+		<type name="character varying" length="10"/>
+	</column>
+	<constraint name="producto_pk" type="pk-constr" table="public.producto">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="producto_parametro" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="160" y="620"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="producto_cat_producto_pk" type="pk-constr" table="public.producto_parametro">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_parametro" index="2"/>
+		<object name="id_producto" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="parametro_fk" index="2"/>
+		<object name="producto_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="control_empaque_cabecera" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1000" y="280"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="id_supervisor">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="empaque_pk" type="pk-constr" table="public.control_empaque_cabecera">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_linea" index="2"/>
+		<object name="id_maquina" index="3"/>
+		<object name="id_perfil_empleado" index="5"/>
+		<object name="id_producto" index="4"/>
+		<object name="id_turno" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="linea_fk" index="2"/>
+		<object name="maquina_fk" index="3"/>
+		<object name="perfil_empleado_fk" index="5"/>
+		<object name="producto_fk" index="4"/>
+		<object name="turno_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="turno_has_many_empaque" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#2c48f0"
+	 src-table="public.turno"
+	 dst-table="public.control_empaque_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="linea_has_many_empaque" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5176a1"
+	 src-table="public.linea"
+	 dst-table="public.control_empaque_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="maquina_has_many_empaque" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#158afb"
+	 src-table="public.maquina"
+	 dst-table="public.control_empaque_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="producto_has_many_empaque" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#6fd503"
+	 src-table="public.producto"
+	 dst-table="public.control_empaque_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="producto_has_many_producto_cat_producto" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#fadebd"
+	 src-table="public.producto"
+	 dst-table="public.producto_parametro"
+	 src-required="false" dst-required="false"/>
+
+<table name="perfil_empleado" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="140" y="200"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="perfil_empleado_pk" type="pk-constr" table="public.perfil_empleado">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_empleado" index="2"/>
+		<object name="id_perfil" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="empleado_fk" index="2"/>
+		<object name="perfil_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="perfil_has_many_perfil_empleado" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#0441d0"
+	 src-table="public.perfil"
+	 dst-table="public.perfil_empleado"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="empleado_has_many_perfil_empleado" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#7716c7"
+	 src-table="public.empleado"
+	 dst-table="public.perfil_empleado"
+	 src-required="false" dst-required="false"/>
+
+<table name="control_producto_cabecera" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="580" y="580"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="id_supervisor">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="control_producto_pk" type="pk-constr" table="public.control_producto_cabecera">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_linea" index="2"/>
+		<object name="id_maquina" index="1"/>
+		<object name="id_perfil_empleado" index="4"/>
+		<object name="id_producto" index="5"/>
+		<object name="id_turno" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="linea_fk" index="2"/>
+		<object name="maquina_fk" index="1"/>
+		<object name="perfil_empleado_fk" index="4"/>
+		<object name="producto_fk" index="5"/>
+		<object name="turno_fk" index="3"/>
+	</customidxs>
+</table>
+
+<relationship name="maquina_has_many_control_producto" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#91f0bf"
+	 src-table="public.maquina"
+	 dst-table="public.control_producto_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="linea_has_many_control_producto" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#055fdd"
+	 src-table="public.linea"
+	 dst-table="public.control_producto_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="turno_has_many_control_producto" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#3fbf61"
+	 src-table="public.turno"
+	 dst-table="public.control_producto_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="perfil_empleado_has_many_control_empaque" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#edd4e0"
+	 src-table="public.perfil_empleado"
+	 dst-table="public.control_empaque_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="perfil_empleado_has_many_control_producto" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#da976b"
+	 src-table="public.perfil_empleado"
+	 dst-table="public.control_producto_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="producto_has_many_control_producto" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#78ad73"
+	 src-table="public.producto"
+	 dst-table="public.control_producto_cabecera"
+	 src-required="false" dst-required="false"/>
+
+<table name="control_producto_detalle" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="600" y="980"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="numero_registro">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="valor">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<constraint name="control_producto_detalle_pk" type="pk-constr" table="public.control_producto_detalle">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_control_producto_cabecera" index="1"/>
+		<object name="id_producto_parametro" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="control_producto_cabecera_fk" index="1"/>
+		<object name="producto_parametro_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="control_producto_cabecera_has_many_control_producto_detalle" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#62e70e"
+	 src-table="public.control_producto_cabecera"
+	 dst-table="public.control_producto_detalle"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="parametro_has_many_producto_parametro" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#28e526"
+	 src-table="public.parametro"
+	 dst-table="public.producto_parametro"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="producto_parametro_has_many_control_producto_detalle" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#da079a"
+	 src-table="public.producto_parametro"
+	 dst-table="public.control_producto_detalle"
+	 src-required="false" dst-required="false"/>
+
+<table name="tipo_parametro" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="180" y="1120"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tipo">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="tipo_parametro_pk" type="pk-constr" table="public.tipo_parametro">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="tipo_parametro_has_many_parametro" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#4916e1"
+	 src-table="public.tipo_parametro"
+	 dst-table="public.parametro"
+	 src-required="false" dst-required="false"/>
+
+<table name="control_empaque_detalle" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1060" y="660"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="numero_registro">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="valor">
+		<type name="numeric" length="10" precision="2"/>
+	</column>
+	<constraint name="control_empaque_detalle_pk" type="pk-constr" table="public.control_empaque_detalle">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_control_empaque_cabecera" index="1"/>
+		<object name="id_parametro" index="5"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="control_empaque_cabecera_fk" index="1"/>
+		<object name="parametro_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="control_empaque_cabecera_has_many_control_empaque_detalle" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#6edb35"
+	 src-table="public.control_empaque_cabecera"
+	 dst-table="public.control_empaque_detalle"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="parametro_has_many_control_empaque_detalle" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#dfc4c3"
+	 src-table="public.parametro"
+	 dst-table="public.control_empaque_detalle"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

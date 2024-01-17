@@ -6,9 +6,12 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -16,12 +19,12 @@ import jakarta.persistence.TemporalType;
 
 
 /**
- * The persistent class for the "turno" database table.
+ * The persistent class for the "perfil_empleado" database table.
  * 
  */
 @Entity
-@Table(name = "turno")
-public class Turno implements Serializable {
+@Table(name="perfil_empleado")
+public class PerfilEmpleado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,18 +43,25 @@ public class Turno implements Serializable {
 	@Column(name="creado")
 	private Date creado;
 
-	@Column(name="descripcion")
-	private String descripcion;
-
 	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@OneToMany(mappedBy="turno")
+	@OneToMany(mappedBy="perfilEmpleado")
 	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
 
 	//bi-directional many-to-one association to ControlProductoCabecera
-	@OneToMany(mappedBy="turno")
+	@OneToMany(mappedBy="perfilEmpleado")
 	private List<ControlProductoCabecera> controlProductoCabeceras;
 
-	public Turno() {
+	//bi-directional many-to-one association to Empleado
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "id_empleado")
+	private Empleado empleado;
+
+	//bi-directional many-to-one association to Perfil
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "id_perfil")
+	private Perfil perfil;
+
+	public PerfilEmpleado() {
 	}
 
 	public int getId() {
@@ -86,14 +96,6 @@ public class Turno implements Serializable {
 		this.creado = creado;
 	}
 
-	public String getDescripcion() {
-		return this.descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	public List<ControlEmpaqueCabecera> getControlEmpaqueCabeceras() {
 		return this.controlEmpaqueCabeceras;
 	}
@@ -104,14 +106,14 @@ public class Turno implements Serializable {
 
 	public ControlEmpaqueCabecera addControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
 		getControlEmpaqueCabeceras().add(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(this);
+		controlEmpaqueCabecera.setPerfilEmpleado(this);
 
 		return controlEmpaqueCabecera;
 	}
 
 	public ControlEmpaqueCabecera removeControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
 		getControlEmpaqueCabeceras().remove(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(null);
+		controlEmpaqueCabecera.setPerfilEmpleado(null);
 
 		return controlEmpaqueCabecera;
 	}
@@ -126,16 +128,32 @@ public class Turno implements Serializable {
 
 	public ControlProductoCabecera addControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		getControlProductoCabeceras().add(controlProductoCabecera);
-		controlProductoCabecera.setTurno(this);
+		controlProductoCabecera.setPerfilEmpleado(this);
 
 		return controlProductoCabecera;
 	}
 
 	public ControlProductoCabecera removeControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		getControlProductoCabeceras().remove(controlProductoCabecera);
-		controlProductoCabecera.setTurno(null);
+		controlProductoCabecera.setPerfilEmpleado(null);
 
 		return controlProductoCabecera;
+	}
+
+	public Empleado getEmpleado() {
+		return this.empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	public Perfil getPerfil() {
+		return this.perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.gruposuperior.calidad.manofactura.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -11,17 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 
 /**
- * The persistent class for the "turno" database table.
+ * The persistent class for the "producto" database table.
  * 
  */
 @Entity
-@Table(name = "turno")
-public class Turno implements Serializable {
+@Table(name="producto")
+public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,29 +26,25 @@ public class Turno implements Serializable {
 	@Column(name="id")
 	private int id;
 
-	@Column(name="activo")
-	private boolean activo;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="borrado")
-	private Date borrado;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="creado")
-	private Date creado;
+	@Column(name="codigo")
+	private String codigo;
 
 	@Column(name="descripcion")
 	private String descripcion;
 
 	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@OneToMany(mappedBy="turno")
+	@OneToMany(mappedBy="producto")
 	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
 
 	//bi-directional many-to-one association to ControlProductoCabecera
-	@OneToMany(mappedBy="turno")
+	@OneToMany(mappedBy="producto")
 	private List<ControlProductoCabecera> controlProductoCabeceras;
 
-	public Turno() {
+	//bi-directional many-to-one association to ProductoParametro
+	@OneToMany(mappedBy="producto")
+	private List<ProductoParametro> productoParametros;
+
+	public Producto() {
 	}
 
 	public int getId() {
@@ -62,28 +55,12 @@ public class Turno implements Serializable {
 		this.id = id;
 	}
 
-	public boolean getActivo() {
-		return this.activo;
+	public String getCodigo() {
+		return this.codigo;
 	}
 
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
-
-	public Date getBorrado() {
-		return this.borrado;
-	}
-
-	public void setBorrado(Date borrado) {
-		this.borrado = borrado;
-	}
-
-	public Date getCreado() {
-		return this.creado;
-	}
-
-	public void setCreado(Date creado) {
-		this.creado = creado;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getDescripcion() {
@@ -104,14 +81,14 @@ public class Turno implements Serializable {
 
 	public ControlEmpaqueCabecera addControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
 		getControlEmpaqueCabeceras().add(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(this);
+		controlEmpaqueCabecera.setProducto(this);
 
 		return controlEmpaqueCabecera;
 	}
 
 	public ControlEmpaqueCabecera removeControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
 		getControlEmpaqueCabeceras().remove(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(null);
+		controlEmpaqueCabecera.setProducto(null);
 
 		return controlEmpaqueCabecera;
 	}
@@ -126,16 +103,38 @@ public class Turno implements Serializable {
 
 	public ControlProductoCabecera addControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		getControlProductoCabeceras().add(controlProductoCabecera);
-		controlProductoCabecera.setTurno(this);
+		controlProductoCabecera.setProducto(this);
 
 		return controlProductoCabecera;
 	}
 
 	public ControlProductoCabecera removeControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		getControlProductoCabeceras().remove(controlProductoCabecera);
-		controlProductoCabecera.setTurno(null);
+		controlProductoCabecera.setProducto(null);
 
 		return controlProductoCabecera;
+	}
+
+	public List<ProductoParametro> getProductoParametros() {
+		return this.productoParametros;
+	}
+
+	public void setProductoParametros(List<ProductoParametro> productoParametros) {
+		this.productoParametros = productoParametros;
+	}
+
+	public ProductoParametro addProductoParametro(ProductoParametro productoParametro) {
+		getProductoParametros().add(productoParametro);
+		productoParametro.setProducto(this);
+
+		return productoParametro;
+	}
+
+	public ProductoParametro removeProductoParametro(ProductoParametro productoParametro) {
+		getProductoParametros().remove(productoParametro);
+		productoParametro.setProducto(null);
+
+		return productoParametro;
 	}
 
 }
