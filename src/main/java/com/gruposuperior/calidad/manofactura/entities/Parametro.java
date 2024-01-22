@@ -67,6 +67,11 @@ public class Parametro implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "id_tipo_parametro")
 	private TipoParametro tipoParametro;
+	
+	//bi-directional many-to-one association to TipoParametro
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "id_proceso")
+	private Proceso proceso;
 
 	//bi-directional many-to-one association to ProductoParametro
 	@OneToMany(mappedBy="parametro")
@@ -199,4 +204,13 @@ public class Parametro implements Serializable {
 		return productoParametro;
 	}
 
+	public Proceso getProceso() {
+		return proceso;
+	}
+
+	public void setProceso(Proceso proceso) {
+		this.proceso = proceso;
+	}
+	
+	
 }

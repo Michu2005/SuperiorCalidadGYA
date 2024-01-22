@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,10 +45,12 @@ public class Turno implements Serializable {
 	@Column(name="descripcion")
 	private String descripcion;
 
+	@JsonIgnore
 	//bi-directional many-to-one association to ControlEmpaqueCabecera
 	@OneToMany(mappedBy="turno")
 	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
 
+	@JsonIgnore
 	//bi-directional many-to-one association to ControlProductoCabecera
 	@OneToMany(mappedBy="turno")
 	private List<ControlProductoCabecera> controlProductoCabeceras;

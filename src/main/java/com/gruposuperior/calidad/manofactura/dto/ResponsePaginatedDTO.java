@@ -1,20 +1,11 @@
 package com.gruposuperior.calidad.manofactura.dto;
 
-import java.util.List;
-
 public class ResponsePaginatedDTO<T> extends ResponseDTO<T> {
 	
-	private List<ResponseDTO<T>> elements;
 	private int currentPage;
 	private long totalElements;
 	private long totalPages;
 	
-	public List<ResponseDTO<T>> getElements() {
-		return elements;
-	}
-	public void setElements(List<ResponseDTO<T>> elements) {
-		this.elements = elements;
-	}
 	public int getCurrentPage() {
 		return currentPage;
 	}

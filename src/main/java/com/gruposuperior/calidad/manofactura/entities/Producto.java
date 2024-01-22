@@ -1,6 +1,7 @@
 package com.gruposuperior.calidad.manofactura.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -10,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 
 /**
@@ -31,6 +34,17 @@ public class Producto implements Serializable {
 
 	@Column(name="descripcion")
 	private String descripcion;
+	
+	@Column(name="activo")
+	private boolean activo;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="borrado")
+	private Date borrado;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="creado")
+	private Date creado;
 
 	//bi-directional many-to-one association to ControlEmpaqueCabecera
 	@OneToMany(mappedBy="producto")
@@ -135,6 +149,30 @@ public class Producto implements Serializable {
 		productoParametro.setProducto(null);
 
 		return productoParametro;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public Date getBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(Date borrado) {
+		this.borrado = borrado;
+	}
+
+	public Date getCreado() {
+		return creado;
+	}
+
+	public void setCreado(Date creado) {
+		this.creado = creado;
 	}
 
 }

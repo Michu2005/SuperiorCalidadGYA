@@ -86,7 +86,21 @@ CREATE TABLE dbcalidad.dbo.producto (
 	id int NOT NULL IDENTITY(1,1),
 	descripcion varchar(255),
 	codigo varchar(10),
+	borrado date NULL,
+	creado date DEFAULT GETDATE(),
+	activo bit DEFAULT 1,
 	CONSTRAINT producto_pk PRIMARY KEY (id)
+);
+
+-- DROP TABLE dbcalidad.dbo.proceso;
+
+CREATE TABLE dbcalidad.dbo.proceso (
+	id int NOT NULL IDENTITY(1,1),
+	descripcion character varying(255),
+	borrado date NULL,
+	creado date DEFAULT GETDATE(),
+	activo bit DEFAULT 1,
+	CONSTRAINT proceso_pk PRIMARY KEY (id)
 );
 
 
@@ -131,6 +145,7 @@ CREATE TABLE dbcalidad.dbo.turno (
 CREATE TABLE dbcalidad.dbo.parametro (
 	id int NOT NULL IDENTITY(1,1),
 	id_tipo_parametro int NULL,
+	id_proceso int NULL,
 	descripcion varchar(255),
 	min numeric(10,2) NULL,
 	max numeric(10,2) NULL,
@@ -140,7 +155,8 @@ CREATE TABLE dbcalidad.dbo.parametro (
 	activo bit DEFAULT 1,
 	valor_unico bit NULL,
 	CONSTRAINT categoria_producto_pk PRIMARY KEY (id),
-	CONSTRAINT tipo_parametro_fk FOREIGN KEY (id_tipo_parametro) REFERENCES dbcalidad.dbo.tipo_parametro(id) ON DELETE SET NULL ON UPDATE CASCADE
+	CONSTRAINT tipo_parametro_fk FOREIGN KEY (id_tipo_parametro) REFERENCES dbcalidad.dbo.tipo_parametro(id) ON DELETE SET NULL ON UPDATE CASCADE,
+	CONSTRAINT proceso_fk FOREIGN KEY (id_proceso) REFERENCES dbcalidad.dbo.proceso(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 

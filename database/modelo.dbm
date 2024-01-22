@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
  Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="1.0.1" use-changelog="false" last-position="201,273" last-zoom="1" max-obj-count="22"
+<dbmodel pgmodeler-ver="1.0.1" use-changelog="false" last-position="0,946" last-zoom="1" max-obj-count="24"
 	 default-schema="public" default-owner="postgres"
 	 layers="Default layer"
 	 active-layers="0"
@@ -139,7 +139,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="parametro" layers="0" collapse-mode="2" max-obj-count="12" z-value="0">
+<table name="parametro" layers="0" collapse-mode="2" max-obj-count="13" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="100" y="860"/>
@@ -175,10 +175,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 
 	<customidxs object-type="column">
+		<object name="id_proceso" index="2"/>
 		<object name="id_tipo_parametro" index="1"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
+		<object name="proceso_fk" index="2"/>
 		<object name="tipo_parametro_fk" index="1"/>
 	</customidxs>
 </table>
@@ -527,7 +529,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tipo_parametro" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="180" y="1120"/>
+	<position x="340" y="1200"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -610,6 +612,39 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#dfc4c3"
 	 src-table="public.parametro"
 	 dst-table="public.control_empaque_detalle"
+	 src-required="false" dst-required="false"/>
+
+<table name="proceso" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="0" y="1200"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="borrado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="creado">
+		<type name="date" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="proceso_pk" type="pk-constr" table="public.proceso">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="proceso_has_many_parametro" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#e2d8a2"
+	 src-table="public.proceso"
+	 dst-table="public.parametro"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
