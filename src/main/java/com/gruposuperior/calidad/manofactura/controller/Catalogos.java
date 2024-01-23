@@ -54,6 +54,195 @@ public class Catalogos {
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
+	//Listar y crear línea
+	@Autowired
+    private LineaService lineaService;
+    
+    
+    @GetMapping(value = "listar/linea")
+    public ResponseEntity<ResponsePaginatedDTO<List<LineaDTO>>> listarLinea( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo linea");
+	
+		ResponsePaginatedDTO<List<LineaDTO>> result = lineaService.listarLinea(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/linea")
+    public ResponseEntity<ResponseDTO<Linea>> crearLinea(@Validated @RequestBody LineaDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo linea");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear linea error");
+		}
+	
+		ResponseDTO<Linea> result = lineaService.crearLinea(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear máquina
+	@Autowired
+    private MaquinaService maquinaService;
+    
+    
+    @GetMapping(value = "listar/maquina")
+    public ResponseEntity<ResponsePaginatedDTO<List<MaquinaDTO>>> listarMaquina( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo maquina");
+	
+		ResponsePaginatedDTO<List<MaquinaDTO>> result = maquinaService.listarMaquina(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/maquina")
+    public ResponseEntity<ResponseDTO<Maquina>> crearMaquina(@Validated @RequestBody MaquinaDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo maquina");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear maquina error");
+		}
+	
+		ResponseDTO<Maquina> result = maquinaService.crearMaquina(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear perfil
+	@Autowired
+    private PerfilService perfilService;
+    
+    
+    @GetMapping(value = "listar/perfil")
+    public ResponseEntity<ResponsePaginatedDTO<List<PerfilDTO>>> listarPerfil( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo perfil");
+	
+		ResponsePaginatedDTO<List<PerfilDTO>> result = perfilDTO.listarPerfil(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/perfil")
+    public ResponseEntity<ResponseDTO<Perfil>> crearPerfil(@Validated @RequestBody PerfilDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo perfil");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear perfil error");
+		}
+	
+		ResponseDTO<Perfil> result = PerfilService.crearPerfil(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear empleado
+	@Autowired
+    private EmpleadoService empleadoService;
+    
+    
+    @GetMapping(value = "listar/empleado")
+    public ResponseEntity<ResponsePaginatedDTO<List<EmpleadoDTO>>> listarEmpleado( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo empleado");
+	
+		ResponsePaginatedDTO<List<EmpleadoDTO>> result = empleadoDTO.listarEmpleado(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/empleado")
+    public ResponseEntity<ResponseDTO<Empleado>> crearEmpleado(@Validated @RequestBody EmpleadoDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo empleado");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear empleado error");
+		}
+	
+		ResponseDTO<Empelado> result = EmpleadoService.crearEmpleado(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear producto
+	@Autowired
+    private ProductoService productoService;
+    
+    
+    @GetMapping(value = "listar/producto")
+    public ResponseEntity<ResponsePaginatedDTO<List<ProductoDTO>>> listarProducto( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo producto");
+	
+		ResponsePaginatedDTO<List<ProductoDTO>> result = productoDTO.listarProducto(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/producto")
+    public ResponseEntity<ResponseDTO<Producto>> crearProducto(@Validated @RequestBody ProductoDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo producto");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear producto error");
+		}
+	
+		ResponseDTO<Producto> result = ProductoService.crearProducto(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear proceso
+	@Autowired
+    private ProcesoService procesoService;
+    
+    
+    @GetMapping(value = "listar/proceso")
+    public ResponseEntity<ResponsePaginatedDTO<List<ProcesoDTO>>> listarProceso( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo proceso");
+	
+		ResponsePaginatedDTO<List<ProcesoDTO>> result = procesoDTO.listarProceso(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/proceso")
+    public ResponseEntity<ResponseDTO<Proceso>> crearProceso(@Validated @RequestBody ProcesoRepository dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo proceso");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear proceso error");
+		}
+	
+		ResponseDTO<Proceso> result = ProcesoService.crearProducto(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear parametros
+	@Autowired
+    private ParametroService parametroService;
+    
+    
+    @GetMapping(value = "listar/parametro")
+    public ResponseEntity<ResponsePaginatedDTO<List<ParametroDTO>>> listarParametros( 
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo parametro");
+	
+		ResponsePaginatedDTO<List<ParametroDTO>> result = parametroDTO.listarParametro(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+    
+    @PostMapping(value = "crear/parametro")
+    public ResponseEntity<ResponseDTO<Parametro>> crearParametro(@Validated @RequestBody ParametroRepository dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo parametro");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear parametro error");
+		}
+	
+		ResponseDTO<Parametro> result = ParametroService.crearParametro(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
 }
 
 

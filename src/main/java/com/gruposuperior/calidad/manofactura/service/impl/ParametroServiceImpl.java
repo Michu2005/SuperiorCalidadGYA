@@ -26,7 +26,7 @@ public class ParametroServiceImpl implements ParametroService{
 	private ParametroRepository parametroRepository;
 
 	@Override
-	public ResponsePaginatedDTO<List<ParametroDTO>> listarParametros(int pageNumber, int pageSize) {
+	public ResponsePaginatedDTO<List<ParametroDTO>> listarParametro(int pageNumber, int pageSize) {
 		// Define el tipo de resultado a retornar		
 		ResponsePaginatedDTO<List<ParametroDTO>> result = new ResponsePaginatedDTO<List<ParametroDTO>>();
 		// Consulta al repositorio con paginacion
@@ -51,7 +51,7 @@ public class ParametroServiceImpl implements ParametroService{
 	public ResponseDTO<Parametro> crearParametro(ParametroDTO parametroDTO) {
 		ResponseDTO<Parametro> result = new ResponseDTO<Parametro>();
 		Parametro parametro = new Parametro();
-		parametro.setDescripcion(productoDTO.getDescripcion());
+		parametro.setDescripcion(parametroDTO.getDescripcion());
 		parametro.setActivo(true);
 		parametro.setCreado(new Date());
 		parametroRepository.save(parametro);
