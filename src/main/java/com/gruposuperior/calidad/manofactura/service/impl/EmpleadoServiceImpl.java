@@ -36,7 +36,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageEmpleado.getContent().stream().map(empleado -> {
-			return new EmpleadoDTO(empleado.getId(), empleado.getDescripcion());
+			return new EmpleadoDTO(empleado.getId(), empleado.getCodigo(), empleado.getNombre());
 		}).collect(Collectors.toList()));
 		
 		result.setCurrentPage(pageEmpleado.getNumber());

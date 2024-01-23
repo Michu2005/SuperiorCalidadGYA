@@ -36,7 +36,7 @@ public class PerfilServiceImpl implements PerfilService{
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pagePerfil.getContent().stream().map(perfil -> {
-			return new LineaDTO(maquina.getId(), maquina.getDescripcion());
+			return new LineaDTO(perfil.getId(), perfil.getDescripcion());
 		}).collect(Collectors.toList()));
 		
 		result.setCurrentPage(pagePerfil.getNumber());

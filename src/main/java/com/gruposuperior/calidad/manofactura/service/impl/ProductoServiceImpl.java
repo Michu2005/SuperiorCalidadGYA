@@ -36,7 +36,7 @@ public class ProductoServiceImpl implements ProductoService{
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageProducto.getContent().stream().map(producto -> {
-			return new ProductoDTO(producto.getId(), producto.getDescripcion());
+			return new ProductoDTO(producto.getId(), producto.getCodigo(), producto.getDescripcion());
 		}).collect(Collectors.toList()));
 		
 		result.setCurrentPage(pageProducto.getNumber());
@@ -49,7 +49,7 @@ public class ProductoServiceImpl implements ProductoService{
 
 	@Override
 	public ResponseDTO<Producto> crearProducto(ProductoDTO productoDTO) {
-		ResponseDTO<Producto> result = new ResponseDTO<Empelado>();
+		ResponseDTO<Producto> result = new ResponseDTO<Producto>();
 		Producto producto = new Producto();
 		producto.setDescripcion(productoDTO.getDescripcion());
 		producto.setActivo(true);

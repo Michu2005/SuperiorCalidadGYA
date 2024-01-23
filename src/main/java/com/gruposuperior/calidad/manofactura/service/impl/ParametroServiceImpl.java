@@ -1,0 +1,64 @@
+package com.gruposuperior.calidad.manofactura.service.impl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
+import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
+import com.gruposuperior.calidad.manofactura.dto.ResponsePaginatedDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.ParametroDTO;
+import com.gruposuperior.calidad.manofactura.entities.Parametro;
+import com.gruposuperior.calidad.manofactura.repositories.ParametroRepository;
+import com.gruposuperior.calidad.manofactura.service.ParametroService;
+
+@Service
+public class ParametroServiceImpl implements ParametroService{
+	
+	@Autowired
+	private ParametroRepository parametroRepository;
+
+	@Override
+	public ResponsePaginatedDTO<List<ParametroDTO>> listarParametros(int pageNumber, int pageSize) {
+		// Define el tipo de resultado a retornar		
+		ResponsePaginatedDTO<List<ParametroDTO>> result = new ResponsePaginatedDTO<List<ParametroDTO>>();
+		// Consulta al repositorio con paginacion
+		Sort sort = Sort.by( Sort.Order.desc("id") );
+		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
+		Page<Parametro> pageParametro = ProcesoRepository.findAll(pagination);
+		
+		// Setea el resultado de la consulta en la respuesta
+		result.setData(pageParametro.getContent().stream().map(parametro -> {
+			return new ProductoDTO(parametro.getId(), parametro.getDescripcion(), parametro.getMax(), parametro.getMin(), parametro.getUnidadMedia(), parametro.valorUnico());
+		}).collect(Collectors.toList()));
+		
+		result.setCurrentPage(pageParametro.getNumber());
+		result.setTotalElements(pageParametro.getTotalElements());
+		result.setTotalPages(pageParametro.getTotalPages());
+		result.setHttpStatus(HttpStatus.OK);
+		
+		return result;
+	}
+
+	@Override
+	public ResponseDTO<Parametro> crearParametro(ParametroDTO parametroDTO) {
+		ResponseDTO<Parametro> result = new ResponseDTO<Parametro>();
+		Parametro parametro = new Parametro();
+		parametro.setDescripcion(productoDTO.getDescripcion());
+		parametro.setActivo(true);
+		parametro.setCreado(new Date());
+		parametroRepository.save(parametro);
+		
+		result.setData(parametro);
+		result.setHttpStatus(HttpStatus.OK);
+		return result;
+	}
+
+}
