@@ -50,7 +50,7 @@ public class LineaServiceImpl implements LineaService{
 	@Override
 	public ResponseDTO<Linea> crearLinea(LineaDTO lineaDTO) {
 		ResponseDTO<Linea> result = new ResponseDTO<Linea>();
-		Turno linea = new Linea();
+		Linea linea = new Linea();
 		linea.setDescripcion(lineaDTO.getDescripcion());
 		linea.setActivo(true);
 		linea.setCreado(new Date());

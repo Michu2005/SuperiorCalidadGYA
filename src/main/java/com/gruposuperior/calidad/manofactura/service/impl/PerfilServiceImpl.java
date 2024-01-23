@@ -50,7 +50,7 @@ public class PerfilServiceImpl implements PerfilService{
 	@Override
 	public ResponseDTO<Perfil> crearPerfil(PerfilDTO perfilDTO) {
 		ResponseDTO<Perfil> result = new ResponseDTO<Perfil>();
-		Turno perfil = new Perfil();
+		Perfil perfil = new Perfil();
 		perfil.setDescripcion(perfilDTO.getDescripcion());
 		perfil.setActivo(true);
 		perfil.setCreado(new Date());

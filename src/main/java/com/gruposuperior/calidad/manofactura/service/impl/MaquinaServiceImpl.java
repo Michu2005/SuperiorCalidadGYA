@@ -50,7 +50,7 @@ public class MaquinaServiceImpl implements MaquinaService{
 	@Override
 	public ResponseDTO<Maquina> crearMaquina(MaquinaDTO maquinaDTO) {
 		ResponseDTO<Maquina> result = new ResponseDTO<Maquina>();
-		Turno maquina = new Maquina();
+		Maquina maquina = new Maquina();
 		maquina.setDescripcion(maquinaDTO.getDescripcion());
 		maquina.setActivo(true);
 		maquina.setCreado(new Date());

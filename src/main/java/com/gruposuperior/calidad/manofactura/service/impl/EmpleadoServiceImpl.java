@@ -50,7 +50,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 	@Override
 	public ResponseDTO<Empleado> crearEmpleado(EmpleadoDTO empleadoDTO) {
 		ResponseDTO<Empleado> result = new ResponseDTO<Empelado>();
-		Turno empleado = new Empelado();
+		Empleado empleado = new Empelado();
 		empleado.setDescripcion(empleadoDTO.getDescripcion());
 		empleado.setActivo(true);
 		empleado.setCreado(new Date());
