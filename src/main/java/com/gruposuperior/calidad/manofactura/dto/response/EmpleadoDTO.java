@@ -14,7 +14,7 @@ public class EmpleadoDTO {
 		super();
 	}
 
-	public EmpleadoDTO(int id, String descripcion) {
+	public EmpleadoDTO(int id, String codigo, String nombre) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
