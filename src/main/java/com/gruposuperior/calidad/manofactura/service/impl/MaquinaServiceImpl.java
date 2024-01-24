@@ -36,7 +36,7 @@ public class MaquinaServiceImpl implements MaquinaService{
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageMaquina.getContent().stream().map(maquina -> {
-			return new LineaDTO(maquina.getId(), maquina.getDescripcion());
+			return new MaquinaDTO(maquina.getId(), maquina.getDescripcion());
 		}).collect(Collectors.toList()));
 		
 		result.setCurrentPage(pageMaquina.getNumber());
@@ -54,7 +54,7 @@ public class MaquinaServiceImpl implements MaquinaService{
 		maquina.setDescripcion(maquinaDTO.getDescripcion());
 		maquina.setActivo(true);
 		maquina.setCreado(new Date());
-		lineaRepository.save(maquina);
+		maquinaRepository.save(maquina);
 		
 		result.setData(maquina);
 		result.setHttpStatus(HttpStatus.OK);

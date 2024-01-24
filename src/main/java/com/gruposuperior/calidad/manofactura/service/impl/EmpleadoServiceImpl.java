@@ -32,7 +32,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		// Consulta al repositorio con paginacion
 		Sort sort = Sort.by( Sort.Order.desc("id") );
 		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Empleado> pageEmpleado = EmpleadoRepository.findAll(pagination);
+		Page<Empleado> pageEmpleado = empleadoRepository.findAll(pagination);
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageEmpleado.getContent().stream().map(empleado -> {
@@ -49,9 +49,9 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 
 	@Override
 	public ResponseDTO<Empleado> crearEmpleado(EmpleadoDTO empleadoDTO) {
-		ResponseDTO<Empleado> result = new ResponseDTO<Empelado>();
-		Empleado empleado = new Empelado();
-		empleado.setDescripcion(empleadoDTO.getDescripcion());
+		ResponseDTO<Empleado> result = new ResponseDTO<Empleado>();
+		Empleado empleado = new Empleado();
+//		empleado.setDescripcion(empleadoDTO.getDescripcion());
 		empleado.setActivo(true);
 		empleado.setCreado(new Date());
 		empleadoRepository.save(empleado);

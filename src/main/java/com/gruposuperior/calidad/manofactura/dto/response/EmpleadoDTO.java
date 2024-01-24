@@ -37,12 +37,14 @@ public class EmpleadoDTO {
 		this.codigo = codigo;
 	}
 
-    public String getNombre() {
-		return noombre;
+	public String getNombre() {
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	
 
 }

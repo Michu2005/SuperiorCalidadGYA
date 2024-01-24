@@ -32,7 +32,7 @@ public class ProductoServiceImpl implements ProductoService{
 		// Consulta al repositorio con paginacion
 		Sort sort = Sort.by( Sort.Order.desc("id") );
 		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Producto> pageProducto = ProductoRepository.findAll(pagination);
+		Page<Producto> pageProducto = productoRepository.findAll(pagination);
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageProducto.getContent().stream().map(producto -> {

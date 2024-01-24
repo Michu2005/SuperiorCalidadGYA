@@ -17,8 +17,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
 import com.gruposuperior.calidad.manofactura.dto.ResponsePaginatedDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.EmpleadoDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.LineaDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.MaquinaDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.ParametroDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.PerfilDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.ProcesoDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.ProductoDTO;
 import com.gruposuperior.calidad.manofactura.dto.response.TurnoDTO;
+import com.gruposuperior.calidad.manofactura.entities.Empleado;
+import com.gruposuperior.calidad.manofactura.entities.Linea;
+import com.gruposuperior.calidad.manofactura.entities.Maquina;
+import com.gruposuperior.calidad.manofactura.entities.Parametro;
+import com.gruposuperior.calidad.manofactura.entities.Perfil;
+import com.gruposuperior.calidad.manofactura.entities.Proceso;
+import com.gruposuperior.calidad.manofactura.entities.Producto;
 import com.gruposuperior.calidad.manofactura.entities.Turno;
+import com.gruposuperior.calidad.manofactura.service.EmpleadoService;
+import com.gruposuperior.calidad.manofactura.service.LineaService;
+import com.gruposuperior.calidad.manofactura.service.MaquinaService;
+import com.gruposuperior.calidad.manofactura.service.ParametroService;
+import com.gruposuperior.calidad.manofactura.service.PerfilService;
+import com.gruposuperior.calidad.manofactura.service.ProcesoService;
+import com.gruposuperior.calidad.manofactura.service.ProductoService;
 import com.gruposuperior.calidad.manofactura.service.TurnoService;
 
 import jakarta.validation.constraints.PositiveOrZero;
@@ -28,9 +49,26 @@ import jakarta.validation.constraints.PositiveOrZero;
 public class Catalogos {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Catalogos.class);
 	
+	/* ===== Inicio Inyección de dependencias ===== */
+	
     @Autowired
     private TurnoService turnoService;
-    
+    @Autowired
+    private LineaService lineaService;
+    @Autowired
+    private MaquinaService maquinaService;
+    @Autowired
+    private PerfilService perfilService;
+	@Autowired
+    private EmpleadoService empleadoService;
+	@Autowired
+    private ProductoService productoService;
+	@Autowired
+    private ProcesoService procesoService;
+	@Autowired
+    private ParametroService parametroService;
+	
+	/* ===== Fin Inyección de dependencias ===== */
     
     @GetMapping(value = "listar/turno")
     public ResponseEntity<ResponsePaginatedDTO<List<TurnoDTO>>> listarTurnos( 
@@ -55,10 +93,6 @@ public class Catalogos {
 	}
 
 	//Listar y crear línea
-	@Autowired
-    private LineaService lineaService;
-    
-    
     @GetMapping(value = "listar/linea")
     public ResponseEntity<ResponsePaginatedDTO<List<LineaDTO>>> listarLinea( 
 			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
@@ -82,10 +116,6 @@ public class Catalogos {
 	}
 
 	//Listar y crear máquina
-	@Autowired
-    private MaquinaService maquinaService;
-    
-    
     @GetMapping(value = "listar/maquina")
     public ResponseEntity<ResponsePaginatedDTO<List<MaquinaDTO>>> listarMaquina( 
 			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
@@ -108,18 +138,14 @@ public class Catalogos {
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
-	//Listar y crear perfil
-	@Autowired
-    private PerfilService perfilService;
-    
-    
+	//Listar y crear perfil    
     @GetMapping(value = "listar/perfil")
     public ResponseEntity<ResponsePaginatedDTO<List<PerfilDTO>>> listarPerfil( 
 			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
 			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
 		LOGGER.info("Consulta catalogo perfil");
 	
-		ResponsePaginatedDTO<List<PerfilDTO>> result = perfilDTO.listarPerfil(page, size);
+		ResponsePaginatedDTO<List<PerfilDTO>> result = perfilService.listarPerfil(page, size);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
     
@@ -131,14 +157,11 @@ public class Catalogos {
 			LOGGER.error("Crear perfil error");
 		}
 	
-		ResponseDTO<Perfil> result = PerfilService.crearPerfil(dto);
+		ResponseDTO<Perfil> result = perfilService.crearPerfil(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
-	//Listar y crear empleado
-	@Autowired
-    private EmpleadoService empleadoService;
-    
+	//Listar y crear empleado   
     
     @GetMapping(value = "listar/empleado")
     public ResponseEntity<ResponsePaginatedDTO<List<EmpleadoDTO>>> listarEmpleado( 
@@ -146,7 +169,7 @@ public class Catalogos {
 			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
 		LOGGER.info("Consulta catalogo empleado");
 	
-		ResponsePaginatedDTO<List<EmpleadoDTO>> result = empleadoDTO.listarEmpleado(page, size);
+		ResponsePaginatedDTO<List<EmpleadoDTO>> result = empleadoService.listarEmpleado(page, size);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
     
@@ -158,14 +181,11 @@ public class Catalogos {
 			LOGGER.error("Crear empleado error");
 		}
 	
-		ResponseDTO<Empelado> result = EmpleadoService.crearEmpleado(dto);
+		ResponseDTO<Empleado> result = empleadoService.crearEmpleado(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
 	//Listar y crear producto
-	@Autowired
-    private ProductoService productoService;
-    
     
     @GetMapping(value = "listar/producto")
     public ResponseEntity<ResponsePaginatedDTO<List<ProductoDTO>>> listarProducto( 
@@ -173,7 +193,7 @@ public class Catalogos {
 			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
 		LOGGER.info("Consulta catalogo producto");
 	
-		ResponsePaginatedDTO<List<ProductoDTO>> result = productoDTO.listarProducto(page, size);
+		ResponsePaginatedDTO<List<ProductoDTO>> result = productoService.listarProducto(page, size);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
     
@@ -185,14 +205,11 @@ public class Catalogos {
 			LOGGER.error("Crear producto error");
 		}
 	
-		ResponseDTO<Producto> result = ProductoService.crearProducto(dto);
+		ResponseDTO<Producto> result = productoService.crearProducto(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
 	//Listar y crear proceso
-	@Autowired
-    private ProcesoService procesoService;
-    
     
     @GetMapping(value = "listar/proceso")
     public ResponseEntity<ResponsePaginatedDTO<List<ProcesoDTO>>> listarProceso( 
@@ -200,26 +217,23 @@ public class Catalogos {
 			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
 		LOGGER.info("Consulta catalogo proceso");
 	
-		ResponsePaginatedDTO<List<ProcesoDTO>> result = procesoDTO.listarProceso(page, size);
+		ResponsePaginatedDTO<List<ProcesoDTO>> result = procesoService.listarProceso(page, size);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
     
     @PostMapping(value = "crear/proceso")
-    public ResponseEntity<ResponseDTO<Proceso>> crearProceso(@Validated @RequestBody ProcesoRepository dto, BindingResult errors){
+    public ResponseEntity<ResponseDTO<Proceso>> crearProceso(@Validated @RequestBody ProcesoDTO dto, BindingResult errors){
 		LOGGER.info("Insertar catalogo proceso");
 		if(errors.hasErrors()) {
 //			throw new PaymentInvalidException();
 			LOGGER.error("Crear proceso error");
 		}
 	
-		ResponseDTO<Proceso> result = ProcesoService.crearProducto(dto);
+		ResponseDTO<Proceso> result = procesoService.crearProceso(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
 	//Listar y crear parametros
-	@Autowired
-    private ParametroService parametroService;
-    
     
     @GetMapping(value = "listar/parametro")
     public ResponseEntity<ResponsePaginatedDTO<List<ParametroDTO>>> listarParametros( 
@@ -227,19 +241,19 @@ public class Catalogos {
 			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
 		LOGGER.info("Consulta catalogo parametro");
 	
-		ResponsePaginatedDTO<List<ParametroDTO>> result = parametroDTO.listarParametro(page, size);
+		ResponsePaginatedDTO<List<ParametroDTO>> result = parametroService.listarParametro(page, size);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
     
     @PostMapping(value = "crear/parametro")
-    public ResponseEntity<ResponseDTO<Parametro>> crearParametro(@Validated @RequestBody ParametroRepository dto, BindingResult errors){
+    public ResponseEntity<ResponseDTO<Parametro>> crearParametro(@Validated @RequestBody ParametroDTO dto, BindingResult errors){
 		LOGGER.info("Insertar catalogo parametro");
 		if(errors.hasErrors()) {
 //			throw new PaymentInvalidException();
 			LOGGER.error("Crear parametro error");
 		}
 	
-		ResponseDTO<Parametro> result = ParametroService.crearParametro(dto);
+		ResponseDTO<Parametro> result = parametroService.crearParametro(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 

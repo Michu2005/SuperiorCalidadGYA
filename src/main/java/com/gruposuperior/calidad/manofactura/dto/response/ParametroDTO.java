@@ -1,5 +1,7 @@
 package com.gruposuperior.calidad.manofactura.dto.response;
 
+import java.math.BigDecimal;
+
 import jakarta.validation.constraints.NotBlank;
 
 public class ParametroDTO {
@@ -16,10 +18,11 @@ public class ParametroDTO {
 		super();
 	}
 
-	public ParametroDTO(int id, String descripcion, BigDecimal max, BigDecimal min, String unidadMedia, boolean valorUnico) {
+	public ParametroDTO(int id, @NotBlank String descripcion, BigDecimal max, BigDecimal min, String unidadMedia,
+			boolean valorUnico) {
 		super();
 		this.id = id;
-        this.descripcion = descripcion;
+		this.descripcion = descripcion;
 		this.max = max;
 		this.min = min;
 		this.unidadMedia = unidadMedia;
@@ -34,7 +37,7 @@ public class ParametroDTO {
 		this.id = id;
 	}
 
-    public String getDescripcion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 
@@ -46,15 +49,15 @@ public class ParametroDTO {
 		return max;
 	}
 
-	public void setMax(String max) {
+	public void setMax(BigDecimal max) {
 		this.max = max;
 	}
-	
+
 	public BigDecimal getMin() {
 		return min;
 	}
 
-	public void setMin(String min) {
+	public void setMin(BigDecimal min) {
 		this.min = min;
 	}
 
@@ -66,11 +69,11 @@ public class ParametroDTO {
 		this.unidadMedia = unidadMedia;
 	}
 
-	public String getValorUnico() {
-		return unidadMedia;
+	public boolean isValorUnico() {
+		return valorUnico;
 	}
 
-	public void setValorUnico(String valorUnico) {
+	public void setValorUnico(boolean valorUnico) {
 		this.valorUnico = valorUnico;
 	}
 

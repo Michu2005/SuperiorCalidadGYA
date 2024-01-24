@@ -32,11 +32,11 @@ public class ProcesoServiceImpl implements ProcesoService{
 		// Consulta al repositorio con paginacion
 		Sort sort = Sort.by( Sort.Order.desc("id") );
 		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Proceso> pageProceso = ProcesoRepository.findAll(pagination);
+		Page<Proceso> pageProceso = procesoRepository.findAll(pagination);
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageProceso.getContent().stream().map(proceso -> {
-			return new ProductoDTO(proceso.getId(), proceso.getDescripcion());
+			return new ProcesoDTO(proceso.getId(), proceso.getDescripcion());
 		}).collect(Collectors.toList()));
 		
 		result.setCurrentPage(pageProceso.getNumber());
@@ -51,7 +51,7 @@ public class ProcesoServiceImpl implements ProcesoService{
 	public ResponseDTO<Proceso> crearProceso(ProcesoDTO procesoDTO) {
 		ResponseDTO<Proceso> result = new ResponseDTO<Proceso>();
 		Proceso proceso = new Proceso();
-		proceso.setDescripcion(productoDTO.getDescripcion());
+		proceso.setDescripcion(procesoDTO.getDescripcion());
 		proceso.setActivo(true);
 		proceso.setCreado(new Date());
 		procesoRepository.save(proceso);

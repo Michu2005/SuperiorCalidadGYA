@@ -32,11 +32,11 @@ public class PerfilServiceImpl implements PerfilService{
 		// Consulta al repositorio con paginacion
 		Sort sort = Sort.by( Sort.Order.desc("id") );
 		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Maquina> pagePerfil = perfilRepository.findAll(pagination);
+		Page<Perfil> pagePerfil = perfilRepository.findAll(pagination);
 		
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pagePerfil.getContent().stream().map(perfil -> {
-			return new LineaDTO(perfil.getId(), perfil.getDescripcion());
+			return new PerfilDTO(perfil.getId(), perfil.getDescripcion());
 		}).collect(Collectors.toList()));
 		
 		result.setCurrentPage(pagePerfil.getNumber());
