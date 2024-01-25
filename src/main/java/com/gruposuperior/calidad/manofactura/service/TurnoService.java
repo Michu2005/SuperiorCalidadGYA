@@ -9,7 +9,7 @@ import com.gruposuperior.calidad.manofactura.entities.Turno;
 
 
 public interface TurnoService {
-	
-	public ResponsePaginatedDTO<List<TurnoDTO>> listarTurno(int pageNumber, int pageSize);
+
+	ResponsePaginatedDTO<List<TurnoDTO>> listarTurno(int pageNumber, int pageSize);
 	public ResponseDTO<Turno> crearTurno(TurnoDTO turnoDTO);
 }
