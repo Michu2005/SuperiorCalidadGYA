@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "b793b1df-c139-4707-9ac8-dd8e6d7ca7b1",
+		"name": "Superior",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32165585"
+	},
+	"item": [
+		{
+			"name": "babosa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/turno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/turno",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"turno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/turno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"descripcionsss\": \"08:00 - 12:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/turno",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"turno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/linea",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/linea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"linea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/linea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/linea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"linea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/maquina",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/maquina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"maquina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/maquina",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/maquina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"maquina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/perfil",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/perfil",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/perfil",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/perfil",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/empleado",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/empleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"empleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/empleado",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/empleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"empleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/producto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/producto",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/producto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/parametro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/parametro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"parametro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/parametro",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/parametro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"parametro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/proceso",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/proceso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"proceso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/proceso",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/proceso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"proceso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/tipoParametro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/listar/tipoParametro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"listar",
+						"tipoParametro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/tipoParametro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/catalogos/crear/tipoParametro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"catalogos",
+						"crear",
+						"tipoParametro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar/perfilEmpleado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/listar/perfilEmpleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"listar",
+						"perfilEmpleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear/perfilEmpleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/crear/perfilEmpleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"crear",
+						"perfilEmpleado"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
