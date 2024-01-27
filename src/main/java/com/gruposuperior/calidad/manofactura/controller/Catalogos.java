@@ -266,6 +266,32 @@ public class Catalogos {
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
+	//Listar y crear tipo parametros
+	@Autowired
+	private TipoParametroService tipoParametroService;
+
+
+	@GetMapping(value = "listar/tipoParametro")
+	public ResponseEntity<ResponsePaginatedDTO<List<TipoParametroDTO>>> listarTipoParametro(
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo tipo parametro");
+
+		ResponsePaginatedDTO<List<TipoParametroDTO>> result = tipoParametroService.listarTipoParametro(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	@PostMapping(value = "crear/tipoParametro")
+	public ResponseEntity<ResponseDTO<TipoParametro>> crearTipoParametro(@Validated @RequestBody TipoParametroDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo tipo parametro");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear tipo parametro error");
+		}
+
+		ResponseDTO<TipoParametro> result = tipoParametroService.crearTipoParametro(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
 }
 
 

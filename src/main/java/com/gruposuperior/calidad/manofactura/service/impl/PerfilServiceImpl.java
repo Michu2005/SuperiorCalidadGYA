@@ -60,5 +60,4 @@ public class PerfilServiceImpl implements PerfilService{
 		result.setHttpStatus(HttpStatus.OK);
 		return result;
 	}
-
 }
