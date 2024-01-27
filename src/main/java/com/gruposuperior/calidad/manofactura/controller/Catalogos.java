@@ -292,6 +292,33 @@ public class Catalogos {
 		ResponseDTO<TipoParametro> result = tipoParametroService.crearTipoParametro(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
+
+	//Listar y crear perfil empleado
+	@Autowired
+	private PerfilEmpleadoService perfilEmpleadoService;
+
+
+	@GetMapping(value = "listar/perfilEmpleado")
+	public ResponseEntity<ResponsePaginatedDTO<List<PerfilEmpleadoDTO>>> listarPerfilEmpleado(
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo perfil empleado");
+
+		ResponsePaginatedDTO<List<PerfilEmpleadoDTO>> result = perfilEmpleadoService.listarPerfilEmpleado(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	@PostMapping(value = "crear/perfilEmpleado")
+	public ResponseEntity<ResponseDTO<PerfilEmpleado>> crearPerfilEmpleado(@Validated @RequestBody PerfilEmpleadoDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo perfil empleado");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear perfil empleado error");
+		}
+
+		ResponseDTO<PerfilEmpleado> result = perfilEmpleadoService.crearPerfilEmpleado(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
 }
 
 

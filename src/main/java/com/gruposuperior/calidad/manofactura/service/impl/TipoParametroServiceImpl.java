@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TipoParametroImpl implements TipoParametroService {
+public class TipoParametroServiceImpl implements TipoParametroService {
     @Autowired
     private TipoParametroRepository tipoParametroRepository;
 
