@@ -26,22 +26,22 @@ public class ProductoServiceImpl implements ProductoService{
 	private ProductoRepository productoRepository;
 
 	@Override
-	public ResponsePaginatedDTO<List<ProductoDTO>> listarProducto(int pageNumber, int pageSize) {
+	public ResponsePaginatedDTO<List<ProductoDTO>> listarProducto() {
 		// Define el tipo de resultado a retornar		
 		ResponsePaginatedDTO<List<ProductoDTO>> result = new ResponsePaginatedDTO<List<ProductoDTO>>();
 		// Consulta al repositorio con paginacion
 		Sort sort = Sort.by( Sort.Order.desc("id") );
-		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Producto> pageProducto = productoRepository.findAll(pagination);
+		//Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
+		List<Producto> pageProducto = productoRepository.findAll();
 		
 		// Setea el resultado de la consulta en la respuesta
-		result.setData(pageProducto.getContent().stream().map(producto -> {
+		result.setData(pageProducto.stream().map(producto -> {
 			return new ProductoDTO(producto.getId(), producto.getCodigo(), producto.getDescripcion());
 		}).collect(Collectors.toList()));
 		
-		result.setCurrentPage(pageProducto.getNumber());
+		/*result.setCurrentPage(pageProducto.getNumber());
 		result.setTotalElements(pageProducto.getTotalElements());
-		result.setTotalPages(pageProducto.getTotalPages());
+		result.setTotalPages(pageProducto.getTotalPages());*/
 		result.setHttpStatus(HttpStatus.OK);
 		
 		return result;

@@ -9,7 +9,6 @@ import com.gruposuperior.calidad.manofactura.entities.Maquina;
 
 
 public interface MaquinaService {
-	
 	public ResponsePaginatedDTO<List<MaquinaDTO>> listarMaquina(int pageNumber, int pageSize);
 	public ResponseDTO<Maquina> crearMaquina(MaquinaDTO maquinaDTO);
 }

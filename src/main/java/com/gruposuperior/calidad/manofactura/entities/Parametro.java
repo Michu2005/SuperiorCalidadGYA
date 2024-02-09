@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.gruposuperior.calidad.manofactura.repositories.ParametroRepository;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,6 +18,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 /**
@@ -211,6 +213,5 @@ public class Parametro implements Serializable {
 	public void setProceso(Proceso proceso) {
 		this.proceso = proceso;
 	}
-	
-	
+
 }

@@ -7,5 +7,4 @@ import com.gruposuperior.calidad.manofactura.entities.Parametro;
 
 @Repository("parametroRepository")
 public interface ParametroRepository extends JpaRepository<Parametro, Integer> {
-
 }

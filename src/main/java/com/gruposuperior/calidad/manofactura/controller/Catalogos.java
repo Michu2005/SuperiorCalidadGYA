@@ -191,12 +191,10 @@ public class Catalogos {
 
 
 	@GetMapping(value = "listar/producto")
-	public ResponseEntity<ResponsePaginatedDTO<List<ProductoDTO>>> listarProducto(
-			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+	public ResponseEntity<ResponsePaginatedDTO<List<ProductoDTO>>> listarProducto(){
 		LOGGER.info("Consulta catalogo producto");
 	
-		ResponsePaginatedDTO<List<ProductoDTO>> result = productoService.listarProducto(page, size);
+		ResponsePaginatedDTO<List<ProductoDTO>> result = productoService.listarProducto();
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
@@ -245,7 +243,7 @@ public class Catalogos {
 
 
 	@GetMapping(value = "listar/parametro")
-	public ResponseEntity<ResponsePaginatedDTO<List<ParametroDTO>>> listarParametros(
+	public ResponseEntity<ResponsePaginatedDTO<List<ParametroDTO>>> listarParametro(
 			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
 			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
 		LOGGER.info("Consulta catalogo parametro");
@@ -297,7 +295,6 @@ public class Catalogos {
 	@Autowired
 	private PerfilEmpleadoService perfilEmpleadoService;
 
-
 	@GetMapping(value = "listar/perfilEmpleado")
 	public ResponseEntity<ResponsePaginatedDTO<List<PerfilEmpleadoDTO>>> listarPerfilEmpleado(
 			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
@@ -308,10 +305,17 @@ public class Catalogos {
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
+	@GetMapping(value = "listar/sac")
+	public ResponseEntity<List<EmpleadoDTO>> listarSac(
+			@PositiveOrZero @RequestParam(value = "idPerfil") Integer idPerfil){
+		List<EmpleadoDTO> result = empleadoService.listarSac(idPerfil);
+		return ResponseEntity.ok(result);
+	}
+
 	@PostMapping(value = "crear/perfilEmpleado")
-	public ResponseEntity<ResponseDTO<PerfilEmpleado>> crearPerfilEmpleado(@Validated @RequestBody PerfilEmpleadoDTO dto, BindingResult errors){
+	public ResponseEntity<ResponseDTO<PerfilEmpleado>> crearPerfilEmpleado(@Validated @RequestBody PerfilEmpleadoDTO dto, BindingResult errors) {
 		LOGGER.info("Insertar catalogo perfil empleado");
-		if(errors.hasErrors()) {
+		if (errors.hasErrors()) {
 //			throw new PaymentInvalidException();
 			LOGGER.error("Crear perfil empleado error");
 		}

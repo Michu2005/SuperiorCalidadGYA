@@ -6,10 +6,12 @@ import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
 import com.gruposuperior.calidad.manofactura.dto.ResponsePaginatedDTO;
 import com.gruposuperior.calidad.manofactura.dto.response.EmpleadoDTO;
 import com.gruposuperior.calidad.manofactura.entities.Empleado;
+import com.gruposuperior.calidad.manofactura.repositories.EmpleadoRepository;
 
 
 public interface EmpleadoService {
-	
-	public ResponsePaginatedDTO<List<EmpleadoDTO>> listarEmpleado(int pageNumber, int pageSize);
+
+    public ResponsePaginatedDTO<List<EmpleadoDTO>> listarEmpleado(int pageNumber, int pageSize);
 	public ResponseDTO<Empleado> crearEmpleado(EmpleadoDTO empleadoDTO);
+	public List<EmpleadoDTO> listarSac(int idPerfil);
 }

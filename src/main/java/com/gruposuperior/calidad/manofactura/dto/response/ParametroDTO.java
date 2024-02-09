@@ -11,8 +11,8 @@ public class ParametroDTO {
     private String descripcion;
     private BigDecimal max;
     private BigDecimal min;
-    private String unidadMedia;
-    private boolean valorUnico;
+	private String unidadMedia;
+	private boolean valorUnico;
 	
 	public ParametroDTO() {
 		super();

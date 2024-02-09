@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface PerfilEmpleadoService {
     ResponsePaginatedDTO<List<PerfilEmpleadoDTO>> listarPerfilEmpleado(int pageNumber, int pageSize);
-    ResponseDTO<PerfilEmpleado> crearPerfilEmpleado(PerfilEmpleadoDTO perfilEmpleadoDTODTO);
+    ResponseDTO<PerfilEmpleado> crearPerfilEmpleado(PerfilEmpleadoDTO perfilEmpleadoDTO);
 }

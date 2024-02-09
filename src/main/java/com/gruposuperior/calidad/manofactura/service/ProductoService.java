@@ -10,6 +10,6 @@ import com.gruposuperior.calidad.manofactura.entities.Producto;
 
 public interface ProductoService {
 	
-	public ResponsePaginatedDTO<List<ProductoDTO>> listarProducto(int pageNumber, int pageSize);
+	public ResponsePaginatedDTO<List<ProductoDTO>> listarProducto();
 	public ResponseDTO<Producto> crearProducto(ProductoDTO productoDTO);
 }

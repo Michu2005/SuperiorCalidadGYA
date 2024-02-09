@@ -60,5 +60,4 @@ public class MaquinaServiceImpl implements MaquinaService{
 		result.setHttpStatus(HttpStatus.OK);
 		return result;
 	}
-
 }

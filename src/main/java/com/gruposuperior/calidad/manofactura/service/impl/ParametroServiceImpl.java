@@ -21,7 +21,7 @@ import com.gruposuperior.calidad.manofactura.service.ParametroService;
 
 @Service
 public class ParametroServiceImpl implements ParametroService{
-	
+
 	@Autowired
 	private ParametroRepository parametroRepository;
 
@@ -30,7 +30,7 @@ public class ParametroServiceImpl implements ParametroService{
 		// Define el tipo de resultado a retornar		
 		ResponsePaginatedDTO<List<ParametroDTO>> result = new ResponsePaginatedDTO<List<ParametroDTO>>();
 		// Consulta al repositorio con paginacion
-		Sort sort = Sort.by( Sort.Order.desc("id") );
+		Sort sort = Sort.by( Sort.Order.desc("id"));
 		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
 		Page<Parametro> pageParametro = parametroRepository.findAll(pagination);
 		

@@ -32,6 +32,12 @@ public class PerfilEmpleado implements Serializable {
 	@Column(name="id")
 	private int id;
 
+	@Column(name="id_perfil")
+	private int idPerfil;
+
+	@Column(name="id_empleado")
+	private int idEmpleado;
+
 	@Column(name="activo")
 	private boolean activo;
 
@@ -52,13 +58,13 @@ public class PerfilEmpleado implements Serializable {
 	private List<ControlProductoCabecera> controlProductoCabeceras;
 
 	//bi-directional many-to-one association to Empleado
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_empleado")
+	@ManyToOne
+	@JoinColumn(name = "id_empleado", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private Empleado empleado;
 
 	//bi-directional many-to-one association to Perfil
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_perfil")
+	@ManyToOne
+	@JoinColumn(name = "id_perfil", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private Perfil perfil;
 
 	public PerfilEmpleado() {
@@ -94,6 +100,22 @@ public class PerfilEmpleado implements Serializable {
 
 	public void setCreado(Date creado) {
 		this.creado = creado;
+	}
+
+	public int getIdPerfil() {
+		return idPerfil;
+	}
+
+	public void setIdPerfil(int idPerfil) {
+		this.idPerfil = idPerfil;
+	}
+
+	public int getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(int idEmpleado) {
+		this.idEmpleado = idEmpleado;
 	}
 
 	public List<ControlEmpaqueCabecera> getControlEmpaqueCabeceras() {
