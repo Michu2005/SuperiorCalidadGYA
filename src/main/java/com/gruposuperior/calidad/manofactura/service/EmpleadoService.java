@@ -14,4 +14,5 @@ public interface EmpleadoService {
     public ResponsePaginatedDTO<List<EmpleadoDTO>> listarEmpleado(int pageNumber, int pageSize);
 	public ResponseDTO<Empleado> crearEmpleado(EmpleadoDTO empleadoDTO);
 	public List<EmpleadoDTO> listarSac(int idPerfil);
+	public List<EmpleadoDTO> listarAac(int idPerfil);
 }

@@ -1,9 +1,15 @@
 package com.gruposuperior.calidad.manofactura.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.gruposuperior.calidad.manofactura.entities.Producto;
+import com.gruposuperior.calidad.manofactura.entities.ProductoParametro;
+import com.gruposuperior.calidad.manofactura.repositories.ProductoParametroRepository;
+import com.gruposuperior.calidad.manofactura.repositories.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -60,5 +66,4 @@ public class ParametroServiceImpl implements ParametroService{
 		result.setHttpStatus(HttpStatus.OK);
 		return result;
 	}
-
 }

@@ -7,5 +7,4 @@ import com.gruposuperior.calidad.manofactura.entities.Perfil;
 
 @Repository("perfilRepository")
 public interface PerfilRepository extends JpaRepository<Perfil, Integer> {
-
 }

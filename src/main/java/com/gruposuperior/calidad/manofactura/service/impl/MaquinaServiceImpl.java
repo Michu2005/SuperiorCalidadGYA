@@ -26,22 +26,17 @@ public class MaquinaServiceImpl implements MaquinaService{
 	private MaquinaRepository maquinaRepository;
 
 	@Override
-	public ResponsePaginatedDTO<List<MaquinaDTO>> listarMaquina(int pageNumber, int pageSize) {
+	public ResponsePaginatedDTO<List<MaquinaDTO>> listarMaquina() {
 		// Define el tipo de resultado a retornar		
 		ResponsePaginatedDTO<List<MaquinaDTO>> result = new ResponsePaginatedDTO<List<MaquinaDTO>>();
 		// Consulta al repositorio con paginacion
-		Sort sort = Sort.by( Sort.Order.desc("id") );
-		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Maquina> pageMaquina = maquinaRepository.findAll(pagination);
+		List<Maquina> pageMaquina = maquinaRepository.findAll();
 		
 		// Setea el resultado de la consulta en la respuesta
-		result.setData(pageMaquina.getContent().stream().map(maquina -> {
+		result.setData(pageMaquina.stream().map(maquina -> {
 			return new MaquinaDTO(maquina.getId(), maquina.getDescripcion());
 		}).collect(Collectors.toList()));
-		
-		result.setCurrentPage(pageMaquina.getNumber());
-		result.setTotalElements(pageMaquina.getTotalElements());
-		result.setTotalPages(pageMaquina.getTotalPages());
+
 		result.setHttpStatus(HttpStatus.OK);
 		
 		return result;

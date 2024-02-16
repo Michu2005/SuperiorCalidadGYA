@@ -82,6 +82,20 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		return listaEmpleadoAListaEmpleadoDTO(listaEmpleado);
 	}
 
+	@Override
+	public List<EmpleadoDTO> listarAac(int idPerfil) {
+		List<PerfilEmpleado> listaPerfilEmpleado = perfilEmpleadoRepository.findByIdPerfil(idPerfil);
+		if(listaPerfilEmpleado.isEmpty()) throw new RuntimeException("No se encontro registros");
+		List<Empleado> listaEmpleado = new ArrayList<>();
+		for (PerfilEmpleado perfilEmpleado : listaPerfilEmpleado){
+			Optional<Empleado> empleado = empleadoRepository.findById(perfilEmpleado.getIdEmpleado());
+			if (empleado.isPresent()){
+				listaEmpleado.add(empleado.get());
+			}
+		}
+		return listaEmpleadoAListaEmpleadoDTO(listaEmpleado);
+	}
+
 	private EmpleadoDTO trasnformaEmpleadoAEmpleadoDTO(Empleado empleado){
 		EmpleadoDTO empleadoDTO = new EmpleadoDTO(empleado.getCodigo(), empleado.getNombre());
 		return empleadoDTO;

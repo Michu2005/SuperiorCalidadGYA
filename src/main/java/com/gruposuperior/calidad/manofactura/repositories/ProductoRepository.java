@@ -7,5 +7,4 @@ import com.gruposuperior.calidad.manofactura.entities.Producto;
 
 @Repository("productoRepository")
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
-
 }

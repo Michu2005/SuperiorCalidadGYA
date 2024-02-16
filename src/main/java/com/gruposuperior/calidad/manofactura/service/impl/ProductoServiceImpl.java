@@ -2,8 +2,11 @@ package com.gruposuperior.calidad.manofactura.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.gruposuperior.calidad.manofactura.entities.Parametro;
+import com.gruposuperior.calidad.manofactura.entities.ProductoParametro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,7 +33,7 @@ public class ProductoServiceImpl implements ProductoService{
 		// Define el tipo de resultado a retornar		
 		ResponsePaginatedDTO<List<ProductoDTO>> result = new ResponsePaginatedDTO<List<ProductoDTO>>();
 		// Consulta al repositorio con paginacion
-		Sort sort = Sort.by( Sort.Order.desc("id") );
+		//Sort sort = Sort.by( Sort.Order.desc("id") );
 		//Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
 		List<Producto> pageProducto = productoRepository.findAll();
 		
@@ -60,5 +63,4 @@ public class ProductoServiceImpl implements ProductoService{
 		result.setHttpStatus(HttpStatus.OK);
 		return result;
 	}
-
 }

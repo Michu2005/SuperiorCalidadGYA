@@ -110,12 +110,10 @@ public class Catalogos {
 
 
 	@GetMapping(value = "listar/maquina")
-	public ResponseEntity<ResponsePaginatedDTO<List<MaquinaDTO>>> listarMaquina(
-			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+	public ResponseEntity<ResponsePaginatedDTO<List<MaquinaDTO>>> listarMaquina(){
 		LOGGER.info("Consulta catalogo maquina");
 
-		ResponsePaginatedDTO<List<MaquinaDTO>> result = maquinaService.listarMaquina(page, size);
+		ResponsePaginatedDTO<List<MaquinaDTO>> result = maquinaService.listarMaquina();
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
@@ -309,6 +307,13 @@ public class Catalogos {
 	public ResponseEntity<List<EmpleadoDTO>> listarSac(
 			@PositiveOrZero @RequestParam(value = "idPerfil") Integer idPerfil){
 		List<EmpleadoDTO> result = empleadoService.listarSac(idPerfil);
+		return ResponseEntity.ok(result);
+	}
+
+	@GetMapping(value = "listar/aac")
+	public ResponseEntity<List<EmpleadoDTO>> listarAac(
+			@PositiveOrZero @RequestParam(value = "idPerfil") Integer idPerfil){
+		List<EmpleadoDTO> result = empleadoService.listarAac(idPerfil);
 		return ResponseEntity.ok(result);
 	}
 

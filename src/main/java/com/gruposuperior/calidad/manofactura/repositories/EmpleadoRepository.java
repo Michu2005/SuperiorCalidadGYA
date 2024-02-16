@@ -11,5 +11,4 @@ import java.util.List;
 
 @Repository("empleadoRepository")
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
-
 }

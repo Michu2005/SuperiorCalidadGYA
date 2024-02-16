@@ -48,13 +48,13 @@ public class ProductoParametro implements Serializable {
 	private List<ControlProductoDetalle> controlProductoDetalles;
 
 	//bi-directional many-to-one association to Parametro
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_parametro")
+	@ManyToOne
+	@JoinColumn(name = "id_parametro", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private Parametro parametro;
 
 	//bi-directional many-to-one association to Producto
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_producto")
+	@ManyToOne
+	@JoinColumn(name = "id_producto", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private Producto producto;
 
 	public ProductoParametro() {
