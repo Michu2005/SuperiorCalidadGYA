@@ -36,18 +36,18 @@ public class ParametroServiceImpl implements ParametroService{
 		// Define el tipo de resultado a retornar		
 		ResponsePaginatedDTO<List<ParametroDTO>> result = new ResponsePaginatedDTO<List<ParametroDTO>>();
 		// Consulta al repositorio con paginacion
-		Sort sort = Sort.by( Sort.Order.desc("id"));
-		Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
-		Page<Parametro> pageParametro = parametroRepository.findAll(pagination);
+		// Sort sort = Sort.by( Sort.Order.desc("id"));
+		//Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
+		List<Parametro> pageParametro = parametroRepository.findAll();
 		
 		// Setea el resultado de la consulta en la respuesta
-		result.setData(pageParametro.getContent().stream().map(parametro -> {
+		result.setData(pageParametro.stream().map(parametro -> {
 			return new ParametroDTO(parametro.getId(), parametro.getDescripcion(), parametro.getMax(), parametro.getMin(), parametro.getUnidadMedida(), parametro.getValorUnico());
 		}).collect(Collectors.toList()));
 		
-		result.setCurrentPage(pageParametro.getNumber());
+		/*result.setCurrentPage(pageParametro.getNumber());
 		result.setTotalElements(pageParametro.getTotalElements());
-		result.setTotalPages(pageParametro.getTotalPages());
+		result.setTotalPages(pageParametro.getTotalPages());*/
 		result.setHttpStatus(HttpStatus.OK);
 		
 		return result;

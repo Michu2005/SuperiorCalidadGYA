@@ -5,6 +5,7 @@ import java.util.List;
 import com.gruposuperior.calidad.manofactura.dto.response.*;
 import com.gruposuperior.calidad.manofactura.entities.*;
 import com.gruposuperior.calidad.manofactura.service.*;
+import com.gruposuperior.calidad.manofactura.service.ProductoParametroService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -326,6 +327,33 @@ public class Catalogos {
 		}
 
 		ResponseDTO<PerfilEmpleado> result = perfilEmpleadoService.crearPerfilEmpleado(dto);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	//Listar y crear tipo Producto Parametro
+	@Autowired
+	private ProductoParametroService productoParametroService;
+
+
+	@GetMapping(value = "listar/productoParametro")
+	public ResponseEntity<ResponsePaginatedDTO<List<ProductoParametroDTO>>> listarProductoParametro(
+			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+		LOGGER.info("Consulta catalogo producto parametro");
+
+		ResponsePaginatedDTO<List<ProductoParametroDTO>> result = productoParametroService.listarProductoParametro(page, size);
+		return new ResponseEntity<>(result, result.getHttpStatus());
+	}
+
+	@PostMapping(value = "crear/productoParametro")
+	public ResponseEntity<ResponseDTO<ProductoParametro>> crearProductoParametro(@Validated @RequestBody ProductoParametroDTO dto, BindingResult errors){
+		LOGGER.info("Insertar catalogo producto parametro");
+		if(errors.hasErrors()) {
+//			throw new PaymentInvalidException();
+			LOGGER.error("Crear producto parametro error");
+		}
+
+		ResponseDTO<ProductoParametro> result = productoParametroService.crearProductoParametro(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 }

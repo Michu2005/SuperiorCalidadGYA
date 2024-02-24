@@ -7,8 +7,9 @@ import com.gruposuperior.calidad.manofactura.dto.ResponsePaginatedDTO;
 import com.gruposuperior.calidad.manofactura.dto.response.EmpleadoDTO;
 import com.gruposuperior.calidad.manofactura.entities.Empleado;
 import com.gruposuperior.calidad.manofactura.repositories.EmpleadoRepository;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public interface EmpleadoService {
 
     public ResponsePaginatedDTO<List<EmpleadoDTO>> listarEmpleado(int pageNumber, int pageSize);

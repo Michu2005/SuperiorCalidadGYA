@@ -1,12 +1,15 @@
 package com.gruposuperior.calidad.manofactura.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.gruposuperior.calidad.manofactura.dto.response.ProductoParametroDTO;
 import com.gruposuperior.calidad.manofactura.entities.Parametro;
 import com.gruposuperior.calidad.manofactura.entities.ProductoParametro;
+import com.gruposuperior.calidad.manofactura.repositories.ProductoParametroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

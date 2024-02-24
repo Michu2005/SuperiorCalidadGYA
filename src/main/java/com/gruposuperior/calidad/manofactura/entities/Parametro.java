@@ -66,13 +66,13 @@ public class Parametro implements Serializable {
 	private List<ControlEmpaqueDetalle> controlEmpaqueDetalles;
 
 	//bi-directional many-to-one association to TipoParametro
-	@ManyToOne
-	@JoinColumn(name = "id_tipo_parametro", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "id_tipo_parametro")
 	private TipoParametro tipoParametro;
-	
+
 	//bi-directional many-to-one association to TipoParametro
-	@ManyToOne
-	@JoinColumn(name = "id_proceso", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "id_proceso")
 	private Proceso proceso;
 
 	//bi-directional many-to-one association to ProductoParametro
@@ -213,5 +213,4 @@ public class Parametro implements Serializable {
 	public void setProceso(Proceso proceso) {
 		this.proceso = proceso;
 	}
-
 }

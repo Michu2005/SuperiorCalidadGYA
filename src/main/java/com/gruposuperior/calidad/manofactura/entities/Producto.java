@@ -34,7 +34,7 @@ public class Producto implements Serializable {
 
 	@Column(name="descripcion")
 	private String descripcion;
-	
+
 	@Column(name="activo")
 	private boolean activo;
 
@@ -174,5 +174,4 @@ public class Producto implements Serializable {
 	public void setCreado(Date creado) {
 		this.creado = creado;
 	}
-
 }

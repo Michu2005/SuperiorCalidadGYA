@@ -43,6 +43,12 @@ public class ProductoParametro implements Serializable {
 	@Column(name="creado")
 	private Date creado;
 
+	@Column(name="id_producto")
+	private int idProducto;
+
+	@Column(name="id_parametro")
+	private int idParametro;
+
 	//bi-directional many-to-one association to ControlProductoDetalle
 	@OneToMany(mappedBy="productoParametro")
 	private List<ControlProductoDetalle> controlProductoDetalles;
@@ -130,4 +136,19 @@ public class ProductoParametro implements Serializable {
 		this.producto = producto;
 	}
 
+	public int getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
+	}
+
+	public int getIdParametro() {
+		return idParametro;
+	}
+
+	public void setIdParametro(int idParametro) {
+		this.idParametro = idParametro;
+	}
 }
