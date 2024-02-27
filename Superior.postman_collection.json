@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b793b1df-c139-4707-9ac8-dd8e6d7ca7b1",
+		"_postman_id": "69dfcc62-5463-4e49-ac4c-6404f7883957",
 		"name": "Superior",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32165585"
+		"_exporter_id": "32311556"
 	},
 	"item": [
 		{
@@ -19,9 +19,21 @@
 		},
 		{
 			"name": "listar/turno",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8081/catalogos/listar/turno",
 					"protocol": "http",
@@ -441,12 +453,12 @@
 			"response": []
 		},
 		{
-			"name": "listar/tipoParametro",
+			"name": "listar/sac?idPerfil=2",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/catalogos/listar/tipoParametro",
+					"raw": "http://localhost:8081/catalogos/listar/sac?idPerfil=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -455,68 +467,13 @@
 					"path": [
 						"catalogos",
 						"listar",
-						"tipoParametro"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "crear/tipoParametro",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/catalogos/crear/tipoParametro",
-					"protocol": "http",
-					"host": [
-						"localhost"
+						"sac"
 					],
-					"port": "8081",
-					"path": [
-						"catalogos",
-						"crear",
-						"tipoParametro"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "listar/perfilEmpleado",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/listar/perfilEmpleado",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"listar",
-						"perfilEmpleado"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "crear/perfilEmpleado",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/crear/perfilEmpleado",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"crear",
-						"perfilEmpleado"
+					"query": [
+						{
+							"key": "idPerfil",
+							"value": "2"
+						}
 					]
 				}
 			},
