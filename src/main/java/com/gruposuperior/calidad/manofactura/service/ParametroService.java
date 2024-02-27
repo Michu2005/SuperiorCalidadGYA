@@ -11,6 +11,6 @@ import com.gruposuperior.calidad.manofactura.entities.Parametro;
 
 public interface ParametroService {
 
-	ResponsePaginatedDTO<List<ParametroDTO>> listarParametro(int pageNumber, int pageSize);
+	ResponsePaginatedDTO<List<ParametroDTO>> listarParametro();
 	ResponseDTO<Parametro> crearParametro(ParametroDTO parametroDTO);
 }

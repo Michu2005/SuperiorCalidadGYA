@@ -3,13 +3,8 @@ package com.gruposuperior.calidad.manofactura.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.gruposuperior.calidad.manofactura.entities.Producto;
-import com.gruposuperior.calidad.manofactura.entities.ProductoParametro;
-import com.gruposuperior.calidad.manofactura.repositories.ProductoParametroRepository;
-import com.gruposuperior.calidad.manofactura.repositories.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,25 +26,24 @@ public class ParametroServiceImpl implements ParametroService{
 	@Autowired
 	private ParametroRepository parametroRepository;
 
-	@Override
-	public ResponsePaginatedDTO<List<ParametroDTO>> listarParametro(int pageNumber, int pageSize) {
-		// Define el tipo de resultado a retornar		
+	public ResponsePaginatedDTO<List<ParametroDTO>> listarParametro() {
+		// Define el tipo de resultado a retornar
 		ResponsePaginatedDTO<List<ParametroDTO>> result = new ResponsePaginatedDTO<List<ParametroDTO>>();
 		// Consulta al repositorio con paginacion
-		// Sort sort = Sort.by( Sort.Order.desc("id"));
+		//Sort sort = Sort.by( Sort.Order.desc("id"));
 		//Pageable pagination = PageRequest.of(pageNumber, pageSize, sort);
 		List<Parametro> pageParametro = parametroRepository.findAll();
-		
+
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageParametro.stream().map(parametro -> {
 			return new ParametroDTO(parametro.getId(), parametro.getDescripcion(), parametro.getMax(), parametro.getMin(), parametro.getUnidadMedida(), parametro.getValorUnico());
 		}).collect(Collectors.toList()));
-		
+
 		/*result.setCurrentPage(pageParametro.getNumber());
 		result.setTotalElements(pageParametro.getTotalElements());
 		result.setTotalPages(pageParametro.getTotalPages());*/
 		result.setHttpStatus(HttpStatus.OK);
-		
+
 		return result;
 	}
 

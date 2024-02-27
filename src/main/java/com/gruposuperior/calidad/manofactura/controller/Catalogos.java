@@ -242,12 +242,10 @@ public class Catalogos {
 
 
 	@GetMapping(value = "listar/parametro")
-	public ResponseEntity<ResponsePaginatedDTO<List<ParametroDTO>>> listarParametro(
-			@PositiveOrZero @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-			@PositiveOrZero @RequestParam(value = "size", required = false, defaultValue = "10") Integer size){
+	public ResponseEntity<ResponsePaginatedDTO<List<ParametroDTO>>> listarParametro(){
 		LOGGER.info("Consulta catalogo parametro");
 	
-		ResponsePaginatedDTO<List<ParametroDTO>> result = parametroService.listarParametro(page, size);
+		ResponsePaginatedDTO<List<ParametroDTO>> result = parametroService.listarParametro();
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
