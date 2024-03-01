@@ -13,4 +13,5 @@ public interface ProductoService {
 	
 	public ResponsePaginatedDTO<List<ProductoDTO>> listarProducto();
 	public ResponseDTO<Producto> crearProducto(ProductoDTO productoDTO);
+	List<Parametro> obtenerParametrosPorIdProducto(int idProducto);
 }

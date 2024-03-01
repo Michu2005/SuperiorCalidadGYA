@@ -1,9 +1,6 @@
 package com.gruposuperior.calidad.manofactura.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.gruposuperior.calidad.manofactura.dto.response.ProductoParametroDTO;
@@ -65,5 +62,17 @@ public class ProductoServiceImpl implements ProductoService{
 		result.setData(producto);
 		result.setHttpStatus(HttpStatus.OK);
 		return result;
+	}
+
+	@Override
+	public List<Parametro> obtenerParametrosPorIdProducto(int idProducto) {
+		Optional<Producto> optionalProducto = productoRepository.findById(idProducto);
+		if (optionalProducto.isPresent()) {
+			Producto producto = optionalProducto.get();
+			return producto.getProductoParametros().stream()
+					.map(ProductoParametro::getParametro)
+					.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
 	}
 }

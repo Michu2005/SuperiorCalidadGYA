@@ -71,8 +71,8 @@ public class Parametro implements Serializable {
 	private TipoParametro tipoParametro;
 
 	//bi-directional many-to-one association to TipoParametro
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_proceso")
+	@ManyToOne
+	@JoinColumn(name = "id_proceso", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private Proceso proceso;
 
 	//bi-directional many-to-one association to ProductoParametro

@@ -57,7 +57,6 @@ public class ProductoParametro implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_parametro", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private Parametro parametro;
-
 	//bi-directional many-to-one association to Producto
 	@ManyToOne
 	@JoinColumn(name = "id_producto", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
@@ -151,4 +150,5 @@ public class ProductoParametro implements Serializable {
 	public void setIdParametro(int idParametro) {
 		this.idParametro = idParametro;
 	}
+
 }

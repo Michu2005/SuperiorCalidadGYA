@@ -354,6 +354,13 @@ public class Catalogos {
 		ResponseDTO<ProductoParametro> result = productoParametroService.crearProductoParametro(dto);
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
+
+	@GetMapping(value = "listar/parametrosPorProducto")
+	public ResponseEntity<List<ParametroDTO>> obtenerParametrosPorIdProducto(
+			@PositiveOrZero @RequestParam(value = "idProducto") Integer idProducto){
+		List<ParametroDTO> result = parametroService.obtenerParametrosPorIdProducto(idProducto);
+		return ResponseEntity.ok(result);
+	}
 }
 
 

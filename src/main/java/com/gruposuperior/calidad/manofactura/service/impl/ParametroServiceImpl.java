@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.gruposuperior.calidad.manofactura.entities.ProductoParametro;
+import com.gruposuperior.calidad.manofactura.repositories.ProductoParametroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +27,8 @@ public class ParametroServiceImpl implements ParametroService{
 
 	@Autowired
 	private ParametroRepository parametroRepository;
+	@Autowired
+	private ProductoParametroRepository productoParametroRepository;
 
 	public ResponsePaginatedDTO<List<ParametroDTO>> listarParametro() {
 		// Define el tipo de resultado a retornar
@@ -36,7 +40,7 @@ public class ParametroServiceImpl implements ParametroService{
 
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageParametro.stream().map(parametro -> {
-			return new ParametroDTO(parametro.getId(), parametro.getDescripcion(), parametro.getMax(), parametro.getMin(), parametro.getUnidadMedida(), parametro.getValorUnico());
+			return new ParametroDTO(parametro.getDescripcion(), parametro.getMax(), parametro.getMin());
 		}).collect(Collectors.toList()));
 
 		/*result.setCurrentPage(pageParametro.getNumber());
@@ -59,5 +63,24 @@ public class ParametroServiceImpl implements ParametroService{
 		result.setData(parametro);
 		result.setHttpStatus(HttpStatus.OK);
 		return result;
+	}
+
+	@Override
+	public List<ParametroDTO> obtenerParametrosPorIdProducto(Integer idProducto) {
+		List<ProductoParametro> productoParametros = productoParametroRepository.findByProductoId(idProducto);
+		List<ParametroDTO> parametrosDTO = productoParametros.stream()
+				.map(productoParametro -> convertirAParametroDTO(productoParametro))
+				.collect(Collectors.toList());
+
+		return parametrosDTO;
+	}
+
+	private ParametroDTO convertirAParametroDTO(ProductoParametro productoParametro) {
+		ParametroDTO parametroDTO = new ParametroDTO();
+		parametroDTO.setDescripcion(productoParametro.getParametro().getDescripcion());
+		parametroDTO.setMax(productoParametro.getParametro().getMax());
+		parametroDTO.setMin(productoParametro.getParametro().getMin());
+
+		return parametroDTO;
 	}
 }
