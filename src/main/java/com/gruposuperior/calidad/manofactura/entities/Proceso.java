@@ -22,8 +22,7 @@ import jakarta.persistence.TemporalType;
  */
 @Entity
 @Table(name="proceso")
-public class Proceso implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Proceso {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -43,10 +42,6 @@ public class Proceso implements Serializable {
 
 	@Column(name="descripcion")
 	private String descripcion;
-
-	//bi-directional many-to-one association to Parametro
-	@OneToMany(mappedBy="proceso")
-	private List<Parametro> parametros;
 
 	public Proceso() {
 	}
@@ -90,27 +85,4 @@ public class Proceso implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-	public List<Parametro> getParametros() {
-		return this.parametros;
-	}
-
-	public void setParametros(List<Parametro> parametros) {
-		this.parametros = parametros;
-	}
-
-	public Parametro addParametro(Parametro parametro) {
-		getParametros().add(parametro);
-		parametro.setProceso(this);
-
-		return parametro;
-	}
-
-	public Parametro removeParametro(Parametro parametro) {
-		getParametros().remove(parametro);
-		parametro.setProceso(null);
-
-		return parametro;
-	}
-
 }

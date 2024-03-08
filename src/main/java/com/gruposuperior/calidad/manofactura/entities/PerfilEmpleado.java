@@ -48,14 +48,6 @@ public class PerfilEmpleado implements Serializable {
 	@Column(name="creado")
 	private Date creado;
 
-	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@OneToMany(mappedBy="perfilEmpleado")
-	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
-
-	//bi-directional many-to-one association to ControlProductoCabecera
-	@OneToMany(mappedBy="perfilEmpleado")
-	private List<ControlProductoCabecera> controlProductoCabeceras;
-
 	//bi-directional many-to-one association to Empleado
 	@ManyToOne
 	@JoinColumn(name = "id_empleado", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
@@ -115,50 +107,6 @@ public class PerfilEmpleado implements Serializable {
 
 	public void setIdEmpleado(int idEmpleado) {
 		this.idEmpleado = idEmpleado;
-	}
-
-	public List<ControlEmpaqueCabecera> getControlEmpaqueCabeceras() {
-		return this.controlEmpaqueCabeceras;
-	}
-
-	public void setControlEmpaqueCabeceras(List<ControlEmpaqueCabecera> controlEmpaqueCabeceras) {
-		this.controlEmpaqueCabeceras = controlEmpaqueCabeceras;
-	}
-
-	public ControlEmpaqueCabecera addControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		getControlEmpaqueCabeceras().add(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setPerfilEmpleado(this);
-
-		return controlEmpaqueCabecera;
-	}
-
-	public ControlEmpaqueCabecera removeControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		getControlEmpaqueCabeceras().remove(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setPerfilEmpleado(null);
-
-		return controlEmpaqueCabecera;
-	}
-
-	public List<ControlProductoCabecera> getControlProductoCabeceras() {
-		return this.controlProductoCabeceras;
-	}
-
-	public void setControlProductoCabeceras(List<ControlProductoCabecera> controlProductoCabeceras) {
-		this.controlProductoCabeceras = controlProductoCabeceras;
-	}
-
-	public ControlProductoCabecera addControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		getControlProductoCabeceras().add(controlProductoCabecera);
-		controlProductoCabecera.setPerfilEmpleado(this);
-
-		return controlProductoCabecera;
-	}
-
-	public ControlProductoCabecera removeControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		getControlProductoCabeceras().remove(controlProductoCabecera);
-		controlProductoCabecera.setPerfilEmpleado(null);
-
-		return controlProductoCabecera;
 	}
 
 	public Empleado getEmpleado() {

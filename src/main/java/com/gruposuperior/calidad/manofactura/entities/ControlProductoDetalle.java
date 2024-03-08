@@ -45,18 +45,22 @@ public class ControlProductoDetalle implements Serializable {
 	@Column(name="numero_registro")
 	private short numeroRegistro;
 
-	@Column(name="valor")
-	private BigDecimal valor;
+	@Column(name="valor_zona_1")
+	private Double valorZona1;
+
+	@Column(name="valor_zona_2")
+	private Double valorZona2;
+
+	@Column(name="valor_zona_3")
+	private Double valorZona3;
+
+	@Column(name="id_parametro")
+	private int idParametro;
 
 	//bi-directional many-to-one association to ControlProductoCabecera
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_control_producto_cabecera")
+	@ManyToOne
+	@JoinColumn(name = "id_control_producto_cabecera", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
 	private ControlProductoCabecera controlProductoCabecera;
-
-	//bi-directional many-to-one association to ProductoParametro
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_producto_parametro")
-	private ProductoParametro productoParametro;
 
 	public ControlProductoDetalle() {
 	}
@@ -101,28 +105,44 @@ public class ControlProductoDetalle implements Serializable {
 		this.numeroRegistro = numeroRegistro;
 	}
 
-	public BigDecimal getValor() {
-		return this.valor;
-	}
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
-
 	public ControlProductoCabecera getControlProductoCabecera() {
 		return this.controlProductoCabecera;
 	}
 
+	public Double getValorZona1() {
+		return valorZona1;
+	}
+
+	public void setValorZona1(Double valorZona1) {
+		this.valorZona1 = valorZona1;
+	}
+
+	public Double getValorZona2() {
+		return valorZona2;
+	}
+
+	public void setValorZona2(Double valorZona2) {
+		this.valorZona2 = valorZona2;
+	}
+
+	public Double getValorZona3() {
+		return valorZona3;
+	}
+
+	public void setValorZona3(Double valorZona3) {
+		this.valorZona3 = valorZona3;
+	}
+
+	public int getIdParametro() {
+		return idParametro;
+	}
+
+	public void setIdParametro(int idParametro) {
+		this.idParametro = idParametro;
+	}
+
 	public void setControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
 		this.controlProductoCabecera = controlProductoCabecera;
-	}
-
-	public ProductoParametro getProductoParametro() {
-		return this.productoParametro;
-	}
-
-	public void setProductoParametro(ProductoParametro productoParametro) {
-		this.productoParametro = productoParametro;
 	}
 
 }

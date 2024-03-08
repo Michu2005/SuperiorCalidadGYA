@@ -355,10 +355,11 @@ public class Catalogos {
 		return new ResponseEntity<>(result, result.getHttpStatus());
 	}
 
-	@GetMapping(value = "listar/parametrosPorProducto")
-	public ResponseEntity<List<ParametroDTO>> obtenerParametrosPorIdProducto(
-			@PositiveOrZero @RequestParam(value = "idProducto") Integer idProducto){
-		List<ParametroDTO> result = parametroService.obtenerParametrosPorIdProducto(idProducto);
+	@GetMapping(value = "listar/parametrosPorProductoYTipoParametro")
+	public ResponseEntity<List<ParametroDTO>> obtenerParametrosPorIdProductoYTipoParametroId(
+			@PositiveOrZero @RequestParam(value = "idProducto") Integer idProducto,
+			@PositiveOrZero @RequestParam(value = "idTipoParametro") Integer idTipoParametro){
+		List<ParametroDTO> result = parametroService.obtenerParametrosPorIdProductoYTipo(idProducto, idTipoParametro);
 		return ResponseEntity.ok(result);
 	}
 }

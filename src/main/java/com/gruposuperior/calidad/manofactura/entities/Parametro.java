@@ -5,10 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import com.gruposuperior.calidad.manofactura.repositories.ParametroRepository;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +16,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 /**
@@ -61,19 +58,13 @@ public class Parametro implements Serializable {
 	@Column(name="valor_unico")
 	private boolean valorUnico;
 
-	//bi-directional many-to-one association to ControlEmpaqueDetalle
-	@OneToMany(mappedBy="parametro")
-	private List<ControlEmpaqueDetalle> controlEmpaqueDetalles;
-
-	//bi-directional many-to-one association to TipoParametro
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_tipo_parametro")
-	private TipoParametro tipoParametro;
+	@Column(name="id_proceso")
+	private int idProceso;
 
 	//bi-directional many-to-one association to TipoParametro
 	@ManyToOne
-	@JoinColumn(name = "id_proceso", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
-	private Proceso proceso;
+	@JoinColumn(name = "id_tipo_parametro", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
+	private TipoParametro tipoParametro;
 
 	//bi-directional many-to-one association to ProductoParametro
 	@OneToMany(mappedBy="parametro")
@@ -154,28 +145,6 @@ public class Parametro implements Serializable {
 		this.valorUnico = valorUnico;
 	}
 
-	public List<ControlEmpaqueDetalle> getControlEmpaqueDetalles() {
-		return this.controlEmpaqueDetalles;
-	}
-
-	public void setControlEmpaqueDetalles(List<ControlEmpaqueDetalle> controlEmpaqueDetalles) {
-		this.controlEmpaqueDetalles = controlEmpaqueDetalles;
-	}
-
-	public ControlEmpaqueDetalle addControlEmpaqueDetalle(ControlEmpaqueDetalle controlEmpaqueDetalle) {
-		getControlEmpaqueDetalles().add(controlEmpaqueDetalle);
-		controlEmpaqueDetalle.setParametro(this);
-
-		return controlEmpaqueDetalle;
-	}
-
-	public ControlEmpaqueDetalle removeControlEmpaqueDetalle(ControlEmpaqueDetalle controlEmpaqueDetalle) {
-		getControlEmpaqueDetalles().remove(controlEmpaqueDetalle);
-		controlEmpaqueDetalle.setParametro(null);
-
-		return controlEmpaqueDetalle;
-	}
-
 	public TipoParametro getTipoParametro() {
 		return this.tipoParametro;
 	}
@@ -206,11 +175,11 @@ public class Parametro implements Serializable {
 		return productoParametro;
 	}
 
-	public Proceso getProceso() {
-		return proceso;
+	public int getIdProceso() {
+		return idProceso;
 	}
 
-	public void setProceso(Proceso proceso) {
-		this.proceso = proceso;
+	public void setIdProceso(int idProceso) {
+		this.idProceso = idProceso;
 	}
 }

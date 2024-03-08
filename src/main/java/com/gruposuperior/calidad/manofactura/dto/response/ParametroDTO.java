@@ -10,16 +10,18 @@ public class ParametroDTO {
     private String descripcion;
     private BigDecimal max;
     private BigDecimal min;
+	private String unidadMedida;
 	
 	public ParametroDTO() {
 		super();
 	}
 
-	public ParametroDTO(@NotBlank String descripcion, BigDecimal max, BigDecimal min) {
+	public ParametroDTO(@NotBlank String descripcion, BigDecimal max, BigDecimal min, String unidadMedida) {
 		super();
 		this.descripcion = descripcion;
 		this.max = max;
 		this.min = min;
+		this.unidadMedida = unidadMedida;
 	}
 
 	public String getDescripcion() {
@@ -46,4 +48,11 @@ public class ParametroDTO {
 		this.min = min;
 	}
 
+	public String getUnidadMedida() {
+		return unidadMedida;
+	}
+
+	public void setUnidadMedida(String unidadMedida) {
+		this.unidadMedida = unidadMedida;
+	}
 }

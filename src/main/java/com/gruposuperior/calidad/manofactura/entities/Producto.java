@@ -46,13 +46,6 @@ public class Producto implements Serializable {
 	@Column(name="creado")
 	private Date creado;
 
-	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@OneToMany(mappedBy="producto")
-	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
-
-	//bi-directional many-to-one association to ControlProductoCabecera
-	@OneToMany(mappedBy="producto")
-	private List<ControlProductoCabecera> controlProductoCabeceras;
 
 	//bi-directional many-to-one association to ProductoParametro
 	@OneToMany(mappedBy="producto")
@@ -83,50 +76,6 @@ public class Producto implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public List<ControlEmpaqueCabecera> getControlEmpaqueCabeceras() {
-		return this.controlEmpaqueCabeceras;
-	}
-
-	public void setControlEmpaqueCabeceras(List<ControlEmpaqueCabecera> controlEmpaqueCabeceras) {
-		this.controlEmpaqueCabeceras = controlEmpaqueCabeceras;
-	}
-
-	public ControlEmpaqueCabecera addControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		getControlEmpaqueCabeceras().add(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setProducto(this);
-
-		return controlEmpaqueCabecera;
-	}
-
-	public ControlEmpaqueCabecera removeControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		getControlEmpaqueCabeceras().remove(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setProducto(null);
-
-		return controlEmpaqueCabecera;
-	}
-
-	public List<ControlProductoCabecera> getControlProductoCabeceras() {
-		return this.controlProductoCabeceras;
-	}
-
-	public void setControlProductoCabeceras(List<ControlProductoCabecera> controlProductoCabeceras) {
-		this.controlProductoCabeceras = controlProductoCabeceras;
-	}
-
-	public ControlProductoCabecera addControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		getControlProductoCabeceras().add(controlProductoCabecera);
-		controlProductoCabecera.setProducto(this);
-
-		return controlProductoCabecera;
-	}
-
-	public ControlProductoCabecera removeControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		getControlProductoCabeceras().remove(controlProductoCabecera);
-		controlProductoCabecera.setProducto(null);
-
-		return controlProductoCabecera;
 	}
 
 	public List<ProductoParametro> getProductoParametros() {

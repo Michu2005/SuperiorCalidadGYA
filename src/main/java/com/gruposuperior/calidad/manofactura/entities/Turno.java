@@ -45,16 +45,6 @@ public class Turno implements Serializable {
 	@Column(name="descripcion")
 	private String descripcion;
 
-	@JsonIgnore
-	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@OneToMany(mappedBy="turno")
-	private List<ControlEmpaqueCabecera> controlEmpaqueCabeceras;
-
-	@JsonIgnore
-	//bi-directional many-to-one association to ControlProductoCabecera
-	@OneToMany(mappedBy="turno")
-	private List<ControlProductoCabecera> controlProductoCabeceras;
-
 	public Turno() {
 	}
 
@@ -98,48 +88,6 @@ public class Turno implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public List<ControlEmpaqueCabecera> getControlEmpaqueCabeceras() {
-		return this.controlEmpaqueCabeceras;
-	}
 
-	public void setControlEmpaqueCabeceras(List<ControlEmpaqueCabecera> controlEmpaqueCabeceras) {
-		this.controlEmpaqueCabeceras = controlEmpaqueCabeceras;
-	}
-
-	public ControlEmpaqueCabecera addControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		getControlEmpaqueCabeceras().add(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(this);
-
-		return controlEmpaqueCabecera;
-	}
-
-	public ControlEmpaqueCabecera removeControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		getControlEmpaqueCabeceras().remove(controlEmpaqueCabecera);
-		controlEmpaqueCabecera.setTurno(null);
-
-		return controlEmpaqueCabecera;
-	}
-
-	public List<ControlProductoCabecera> getControlProductoCabeceras() {
-		return this.controlProductoCabeceras;
-	}
-
-	public void setControlProductoCabeceras(List<ControlProductoCabecera> controlProductoCabeceras) {
-		this.controlProductoCabeceras = controlProductoCabeceras;
-	}
-
-	public ControlProductoCabecera addControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		getControlProductoCabeceras().add(controlProductoCabecera);
-		controlProductoCabecera.setTurno(this);
-
-		return controlProductoCabecera;
-	}
-
-	public ControlProductoCabecera removeControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		getControlProductoCabeceras().remove(controlProductoCabecera);
-		controlProductoCabecera.setTurno(null);
-
-		return controlProductoCabecera;
-	}
 
 }

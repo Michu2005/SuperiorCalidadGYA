@@ -13,5 +13,5 @@ public interface ParametroService {
 
 	ResponsePaginatedDTO<List<ParametroDTO>> listarParametro();
 	ResponseDTO<Parametro> crearParametro(ParametroDTO parametroDTO);
-	List<ParametroDTO> obtenerParametrosPorIdProducto(Integer idProducto);
+	List<ParametroDTO> obtenerParametrosPorIdProductoYTipo(Integer idProducto, Integer tipoParametroId);
 }

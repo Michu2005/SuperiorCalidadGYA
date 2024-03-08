@@ -40,7 +40,7 @@ public class ParametroServiceImpl implements ParametroService{
 
 		// Setea el resultado de la consulta en la respuesta
 		result.setData(pageParametro.stream().map(parametro -> {
-			return new ParametroDTO(parametro.getDescripcion(), parametro.getMax(), parametro.getMin());
+			return new ParametroDTO(parametro.getDescripcion(), parametro.getMax(), parametro.getMin(), parametro.getUnidadMedida());
 		}).collect(Collectors.toList()));
 
 		/*result.setCurrentPage(pageParametro.getNumber());
@@ -66,13 +66,21 @@ public class ParametroServiceImpl implements ParametroService{
 	}
 
 	@Override
-	public List<ParametroDTO> obtenerParametrosPorIdProducto(Integer idProducto) {
+	public List<ParametroDTO> obtenerParametrosPorIdProductoYTipo(Integer idProducto, Integer tipoParametroId) {
 		List<ProductoParametro> productoParametros = productoParametroRepository.findByProductoId(idProducto);
-		List<ParametroDTO> parametrosDTO = productoParametros.stream()
-				.map(productoParametro -> convertirAParametroDTO(productoParametro))
+
+		List<ProductoParametro> productoParanetroFilter = new ArrayList<>();
+		for(ProductoParametro productoParametro : productoParametros){
+			if(productoParametro.getParametro().getTipoParametro().getId() == tipoParametroId){
+				productoParanetroFilter.add(productoParametro);
+			}
+		}
+
+		List<ParametroDTO> parametroDTO = productoParanetroFilter.stream()
+				.map((productoParametro) -> convertirAParametroDTO(productoParametro))
 				.collect(Collectors.toList());
 
-		return parametrosDTO;
+		return parametroDTO;
 	}
 
 	private ParametroDTO convertirAParametroDTO(ProductoParametro productoParametro) {
@@ -80,6 +88,7 @@ public class ParametroServiceImpl implements ParametroService{
 		parametroDTO.setDescripcion(productoParametro.getParametro().getDescripcion());
 		parametroDTO.setMax(productoParametro.getParametro().getMax());
 		parametroDTO.setMin(productoParametro.getParametro().getMin());
+		parametroDTO.setUnidadMedida(productoParametro.getParametro().getUnidadMedida());
 
 		return parametroDTO;
 	}

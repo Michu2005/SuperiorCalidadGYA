@@ -49,10 +49,6 @@ public class ProductoParametro implements Serializable {
 	@Column(name="id_parametro")
 	private int idParametro;
 
-	//bi-directional many-to-one association to ControlProductoDetalle
-	@OneToMany(mappedBy="productoParametro")
-	private List<ControlProductoDetalle> controlProductoDetalles;
-
 	//bi-directional many-to-one association to Parametro
 	@ManyToOne
 	@JoinColumn(name = "id_parametro", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
@@ -95,28 +91,6 @@ public class ProductoParametro implements Serializable {
 
 	public void setCreado(Date creado) {
 		this.creado = creado;
-	}
-
-	public List<ControlProductoDetalle> getControlProductoDetalles() {
-		return this.controlProductoDetalles;
-	}
-
-	public void setControlProductoDetalles(List<ControlProductoDetalle> controlProductoDetalles) {
-		this.controlProductoDetalles = controlProductoDetalles;
-	}
-
-	public ControlProductoDetalle addControlProductoDetalle(ControlProductoDetalle controlProductoDetalle) {
-		getControlProductoDetalles().add(controlProductoDetalle);
-		controlProductoDetalle.setProductoParametro(this);
-
-		return controlProductoDetalle;
-	}
-
-	public ControlProductoDetalle removeControlProductoDetalle(ControlProductoDetalle controlProductoDetalle) {
-		getControlProductoDetalles().remove(controlProductoDetalle);
-		controlProductoDetalle.setProductoParametro(null);
-
-		return controlProductoDetalle;
 	}
 
 	public Parametro getParametro() {
