@@ -56,7 +56,7 @@ public class Parametro implements Serializable {
 	private String unidadMedida;
 
 	@Column(name="valor_unico")
-	private boolean valorUnico;
+	private Boolean valorUnico;
 
 	@Column(name="id_proceso")
 	private int idProceso;
@@ -137,11 +137,11 @@ public class Parametro implements Serializable {
 		this.unidadMedida = unidadMedida;
 	}
 
-	public boolean getValorUnico() {
+	public Boolean getValorUnico() {
 		return this.valorUnico;
 	}
 
-	public void setValorUnico(boolean valorUnico) {
+	public void setValorUnico(Boolean valorUnico) {
 		this.valorUnico = valorUnico;
 	}
 

@@ -46,30 +46,20 @@ public class ControlEmpaqueCabecera implements Serializable {
 	@Column(name="id_supervisor")
 	private int idSupervisor;
 
-	//bi-directional many-to-one association to Linea
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_linea")
-	private Linea linea;
+	@Column(name="id_analista")
+	private Double idAnalista;
 
-	//bi-directional many-to-one association to Maquina
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_maquina")
-	private Maquina maquina;
+	@Column(name="id_linea")
+	private Double idLinea;
 
-	//bi-directional many-to-one association to PerfilEmpleado
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_perfil_empleado")
-	private PerfilEmpleado perfilEmpleado;
+	@Column(name="id_producto")
+	private Double idProducto;
 
-	//bi-directional many-to-one association to Producto
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_producto")
-	private Producto producto;
+	@Column(name="id_turno")
+	private Double idTurno;
 
-	//bi-directional many-to-one association to Turno
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_turno")
-	private Turno turno;
+	@Column(name="id_maquina")
+	private Double idMaquina;
 
 	//bi-directional many-to-one association to ControlEmpaqueDetalle
 	@OneToMany(mappedBy="controlEmpaqueCabecera")
@@ -118,44 +108,44 @@ public class ControlEmpaqueCabecera implements Serializable {
 		this.idSupervisor = idSupervisor;
 	}
 
-	public Linea getLinea() {
-		return this.linea;
+	public Double getIdAnalista() {
+		return idAnalista;
 	}
 
-	public void setLinea(Linea linea) {
-		this.linea = linea;
+	public void setIdAnalista(Double idAnalista) {
+		this.idAnalista = idAnalista;
 	}
 
-	public Maquina getMaquina() {
-		return this.maquina;
+	public Double getIdLinea() {
+		return idLinea;
 	}
 
-	public void setMaquina(Maquina maquina) {
-		this.maquina = maquina;
+	public void setIdLinea(Double idLinea) {
+		this.idLinea = idLinea;
 	}
 
-	public PerfilEmpleado getPerfilEmpleado() {
-		return this.perfilEmpleado;
+	public Double getIdProducto() {
+		return idProducto;
 	}
 
-	public void setPerfilEmpleado(PerfilEmpleado perfilEmpleado) {
-		this.perfilEmpleado = perfilEmpleado;
+	public void setIdProducto(Double idProducto) {
+		this.idProducto = idProducto;
 	}
 
-	public Producto getProducto() {
-		return this.producto;
+	public Double getIdTurno() {
+		return idTurno;
 	}
 
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+	public void setIdTurno(Double idTurno) {
+		this.idTurno = idTurno;
 	}
 
-	public Turno getTurno() {
-		return this.turno;
+	public Double getIdMaquina() {
+		return idMaquina;
 	}
 
-	public void setTurno(Turno turno) {
-		this.turno = turno;
+	public void setIdMaquina(Double idMaquina) {
+		this.idMaquina = idMaquina;
 	}
 
 	public List<ControlEmpaqueDetalle> getControlEmpaqueDetalles() {
