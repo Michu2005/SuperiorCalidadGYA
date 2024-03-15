@@ -4,8 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
 
-public class CabeceraProcesoDTO {
-
+public class CabeceraEmpaqueDTO {
     @NotBlank
     private int idSupervisor;
 
@@ -21,17 +20,21 @@ public class CabeceraProcesoDTO {
     @NotBlank
     private int idProducto;
 
-    List<DetalleProcesoDTO> detalleProcesoDTOList;
+    @NotBlank
+    private int idMaquina;
 
-    public CabeceraProcesoDTO() {
+    List<DetalleEmpaqueDTO> detalleEmpaqueDTOList;
+
+    public CabeceraEmpaqueDTO() {
     }
 
-    public CabeceraProcesoDTO(int idSupervisor, int idAnalista, int idTurno, int idLinea, int idProducto) {
+    public CabeceraEmpaqueDTO(int idSupervisor, int idAnalista, int idTurno, int idLinea, int idProducto, int idMaquina) {
         this.idSupervisor = idSupervisor;
         this.idAnalista = idAnalista;
         this.idTurno = idTurno;
         this.idLinea = idLinea;
         this.idProducto = idProducto;
+        this.idMaquina = idMaquina;
     }
 
     public int getIdSupervisor() {
@@ -74,23 +77,19 @@ public class CabeceraProcesoDTO {
         this.idProducto = idProducto;
     }
 
-    public List<DetalleProcesoDTO> getDetalleProcesoDTOList() {
-        return detalleProcesoDTOList;
+    public int getIdMaquina() {
+        return idMaquina;
     }
 
-    public void setDetalleProcesoDTOList(List<DetalleProcesoDTO> detalleProcesoDTOList) {
-        this.detalleProcesoDTOList = detalleProcesoDTOList;
+    public void setIdMaquina(int idMaquina) {
+        this.idMaquina = idMaquina;
     }
 
-    @Override
-    public String toString() {
-        return "CabeceraProcesoDTO{" +
-                "idSupervisor=" + idSupervisor +
-                ", idAnalista=" + idAnalista +
-                ", idTurno=" + idTurno +
-                ", idLinea=" + idLinea +
-                ", idProducto=" + idProducto +
-                ", detalleProcesoDTOList=" + detalleProcesoDTOList +
-                '}';
+    public List<DetalleEmpaqueDTO> getDetalleEmpaqueDTOList() {
+        return detalleEmpaqueDTOList;
+    }
+
+    public void setDetalleEmpaqueDTOList(List<DetalleEmpaqueDTO> detalleEmpaqueDTOList) {
+        this.detalleEmpaqueDTOList = detalleEmpaqueDTOList;
     }
 }

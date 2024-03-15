@@ -47,16 +47,16 @@ public class ControlProductoCabecera implements Serializable {
 	private int idSupervisor;
 
 	@Column(name="id_analista")
-	private Double idAnalista;
+	private int idAnalista;
 
 	@Column(name="id_linea")
-	private Double idLinea;
+	private int idLinea;
 
 	@Column(name="id_producto")
-	private Double idProducto;
+	private int idProducto;
 
 	@Column(name="id_turno")
-	private Double idTurno;
+	private int idTurno;
 
 	public ControlProductoCabecera() {
 	}
@@ -101,36 +101,50 @@ public class ControlProductoCabecera implements Serializable {
 		this.idSupervisor = idSupervisor;
 	}
 
-	public Double getIdAnalista() {
+	public Integer getIdAnalista() {
 		return idAnalista;
 	}
 
-	public void setIdAnalista(Double idAnalista) {
+	public void setIdAnalista(Integer idAnalista) {
 		this.idAnalista = idAnalista;
 	}
 
-	public Double getIdLinea() {
+	public Integer getIdLinea() {
 		return idLinea;
 	}
 
-	public void setIdLinea(Double idLinea) {
+	public void setIdLinea(Integer idLinea) {
 		this.idLinea = idLinea;
 	}
 
-	public Double getIdProducto() {
+	public Integer getIdProducto() {
 		return idProducto;
 	}
 
-	public void setIdProducto(Double idProducto) {
+	public void setIdProducto(Integer idProducto) {
 		this.idProducto = idProducto;
 	}
 
-	public Double getIdTurno() {
+	public Integer getIdTurno() {
 		return idTurno;
 	}
 
-	public void setIdTurno(Double idTurno) {
+	public void setIdTurno(Integer idTurno) {
 		this.idTurno = idTurno;
 	}
 
+	@Override
+	public String toString() {
+		return "ControlProductoCabecera{" +
+				"id=" + id +
+				", activo=" + activo +
+				", borrado=" + borrado +
+				", creado=" + creado +
+				", idSupervisor=" + idSupervisor +
+				", idAnalista=" + idAnalista +
+				", idLinea=" + idLinea +
+				", idProducto=" + idProducto +
+				", idTurno=" + idTurno +
+				'}';
+	}
 }

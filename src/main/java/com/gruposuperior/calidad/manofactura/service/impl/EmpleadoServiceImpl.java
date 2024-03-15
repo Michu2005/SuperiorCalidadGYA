@@ -101,6 +101,12 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		return empleadoDTO;
 	}
 
+	@Override
+	public Integer getIdEmpleado(String codigo){
+		Empleado empleado = empleadoRepository.findByCodigo(codigo);
+		return (empleado != null) ? empleado.getId() : 0;
+	}
+
 	private List<EmpleadoDTO> listaEmpleadoAListaEmpleadoDTO(List<Empleado> listaEmpleados){
 		List<EmpleadoDTO> result = new ArrayList<>();
 		for (Empleado empleado : listaEmpleados){

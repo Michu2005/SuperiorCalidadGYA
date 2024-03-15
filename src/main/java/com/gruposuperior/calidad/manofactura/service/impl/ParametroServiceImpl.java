@@ -85,6 +85,7 @@ public class ParametroServiceImpl implements ParametroService{
 
 	private ParametroDTO convertirAParametroDTO(ProductoParametro productoParametro) {
 		ParametroDTO parametroDTO = new ParametroDTO();
+		parametroDTO.setId(productoParametro.getIdParametro());
 		parametroDTO.setDescripcion(productoParametro.getParametro().getDescripcion());
 		parametroDTO.setMax(productoParametro.getParametro().getMax());
 		parametroDTO.setMin(productoParametro.getParametro().getMin());

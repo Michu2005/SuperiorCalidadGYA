@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 public class ParametroDTO {
 
     @NotBlank
+	private Integer id;
     private String descripcion;
     private BigDecimal max;
     private BigDecimal min;
@@ -23,6 +24,9 @@ public class ParametroDTO {
 		this.min = min;
 		this.unidadMedida = unidadMedida;
 	}
+
+	public Integer getId(){return id;}
+	public void setId(Integer id){this.id = id;}
 
 	public String getDescripcion() {
 		return descripcion;

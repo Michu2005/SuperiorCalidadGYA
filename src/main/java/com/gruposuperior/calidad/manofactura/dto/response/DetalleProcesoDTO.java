@@ -8,18 +8,18 @@ public class DetalleProcesoDTO {
     private int idParametro;
 
     @NotBlank
-    private int valorZona1;
+    private Double valorZona1;
 
     @NotBlank
-    private int valorZona2;
+    private Double valorZona2;
 
     @NotBlank
-    private int valorZona3;
+    private Double valorZona3;
 
     public DetalleProcesoDTO() {
     }
 
-    public DetalleProcesoDTO(int idParametro, int valorZona1, int valorZona2, int valorZona3) {
+    public DetalleProcesoDTO(int idParametro, Double valorZona1, Double valorZona2, Double valorZona3) {
         this.idParametro = idParametro;
         this.valorZona1 = valorZona1;
         this.valorZona2 = valorZona2;
@@ -34,27 +34,27 @@ public class DetalleProcesoDTO {
         this.idParametro = idParametro;
     }
 
-    public int getValorZona1() {
+    public Double getValorZona1() {
         return valorZona1;
     }
 
-    public void setValorZona1(int valorZona1) {
+    public void setValorZona1(Double valorZona1) {
         this.valorZona1 = valorZona1;
     }
 
-    public int getValorZona2() {
+    public Double getValorZona2() {
         return valorZona2;
     }
 
-    public void setValorZona2(int valorZona2) {
+    public void setValorZona2(Double valorZona2) {
         this.valorZona2 = valorZona2;
     }
 
-    public int getValorZona3() {
+    public Double getValorZona3() {
         return valorZona3;
     }
 
-    public void setValorZona3(int valorZona3) {
+    public void setValorZona3(Double valorZona3) {
         this.valorZona3 = valorZona3;
     }
 

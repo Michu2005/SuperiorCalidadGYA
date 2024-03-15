@@ -43,7 +43,7 @@ public class ControlProductoDetalle implements Serializable {
 	private Date creado;
 
 	@Column(name="numero_registro")
-	private short numeroRegistro;
+	private int numeroRegistro;
 
 	@Column(name="valor_zona_1")
 	private Double valorZona1;
@@ -97,11 +97,11 @@ public class ControlProductoDetalle implements Serializable {
 		this.creado = creado;
 	}
 
-	public short getNumeroRegistro() {
+	public int getNumeroRegistro() {
 		return this.numeroRegistro;
 	}
 
-	public void setNumeroRegistro(short numeroRegistro) {
+	public void setNumeroRegistro(int numeroRegistro) {
 		this.numeroRegistro = numeroRegistro;
 	}
 

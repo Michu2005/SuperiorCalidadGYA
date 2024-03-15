@@ -16,4 +16,5 @@ public interface EmpleadoService {
 	public ResponseDTO<Empleado> crearEmpleado(EmpleadoDTO empleadoDTO);
 	public List<EmpleadoDTO> listarSac(int idPerfil);
 	public List<EmpleadoDTO> listarAac(int idPerfil);
+	public Integer getIdEmpleado(String codigo);
 }
