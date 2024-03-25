@@ -16,14 +16,18 @@ public class DetalleProcesoDTO {
     @NotBlank
     private Double valorZona3;
 
+    @NotBlank
+    private int idControlProductoCabecera;
+
     public DetalleProcesoDTO() {
     }
 
-    public DetalleProcesoDTO(int idParametro, Double valorZona1, Double valorZona2, Double valorZona3) {
+    public DetalleProcesoDTO(int idParametro, Double valorZona1, Double valorZona2, Double valorZona3, int idControlProductoCabecera) {
         this.idParametro = idParametro;
         this.valorZona1 = valorZona1;
         this.valorZona2 = valorZona2;
         this.valorZona3 = valorZona3;
+        this.idControlProductoCabecera = idControlProductoCabecera;
     }
 
     public int getIdParametro() {
@@ -58,4 +62,11 @@ public class DetalleProcesoDTO {
         this.valorZona3 = valorZona3;
     }
 
+    public int getIdControlProductoCabecera() {
+        return idControlProductoCabecera;
+    }
+
+    public void setIdControlProductoCabecera(int idControlProductoCabecera) {
+        this.idControlProductoCabecera = idControlProductoCabecera;
+    }
 }

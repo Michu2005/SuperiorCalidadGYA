@@ -1,21 +1,11 @@
 package com.gruposuperior.calidad.manofactura.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 
 /**
@@ -47,23 +37,22 @@ public class ControlEmpaqueCabecera implements Serializable {
 	private int idSupervisor;
 
 	@Column(name="id_analista")
-	private Double idAnalista;
+	private int idAnalista;
 
 	@Column(name="id_linea")
-	private Double idLinea;
+	private int idLinea;
 
 	@Column(name="id_producto")
-	private Double idProducto;
+	private int idProducto;
 
 	@Column(name="id_turno")
-	private Double idTurno;
+	private int idTurno;
 
 	@Column(name="id_maquina")
-	private Double idMaquina;
+	private int idMaquina;
 
-	//bi-directional many-to-one association to ControlEmpaqueDetalle
-	@OneToMany(mappedBy="controlEmpaqueCabecera")
-	private List<ControlEmpaqueDetalle> controlEmpaqueDetalles;
+	@Column(name="lote")
+	private String lote;
 
 	public ControlEmpaqueCabecera() {
 	}
@@ -108,66 +97,68 @@ public class ControlEmpaqueCabecera implements Serializable {
 		this.idSupervisor = idSupervisor;
 	}
 
-	public Double getIdAnalista() {
+	public Integer getIdAnalista() {
 		return idAnalista;
 	}
 
-	public void setIdAnalista(Double idAnalista) {
+	public void setIdAnalista(int idAnalista) {
 		this.idAnalista = idAnalista;
 	}
 
-	public Double getIdLinea() {
+	public Integer getIdLinea() {
 		return idLinea;
 	}
 
-	public void setIdLinea(Double idLinea) {
+	public void setIdLinea(int idLinea) {
 		this.idLinea = idLinea;
 	}
 
-	public Double getIdProducto() {
+	public Integer getIdProducto() {
 		return idProducto;
 	}
 
-	public void setIdProducto(Double idProducto) {
+	public void setIdProducto(int idProducto) {
 		this.idProducto = idProducto;
 	}
 
-	public Double getIdTurno() {
+	public Integer getIdTurno() {
 		return idTurno;
 	}
 
-	public void setIdTurno(Double idTurno) {
-		this.idTurno = idTurno;
-	}
-
-	public Double getIdMaquina() {
+	public Integer getIdMaquina() {
 		return idMaquina;
 	}
 
-	public void setIdMaquina(Double idMaquina) {
+	public void setIdTurno(int idTurno) {
+		this.idTurno = idTurno;
+	}
+
+	public void setIdMaquina(int idMaquina) {
 		this.idMaquina = idMaquina;
 	}
 
-	public List<ControlEmpaqueDetalle> getControlEmpaqueDetalles() {
-		return this.controlEmpaqueDetalles;
+	public String getLote() {
+		return lote;
 	}
 
-	public void setControlEmpaqueDetalles(List<ControlEmpaqueDetalle> controlEmpaqueDetalles) {
-		this.controlEmpaqueDetalles = controlEmpaqueDetalles;
+	public void setLote(String lote) {
+		this.lote = lote;
 	}
 
-	public ControlEmpaqueDetalle addControlEmpaqueDetalle(ControlEmpaqueDetalle controlEmpaqueDetalle) {
-		getControlEmpaqueDetalles().add(controlEmpaqueDetalle);
-		controlEmpaqueDetalle.setControlEmpaqueCabecera(this);
-
-		return controlEmpaqueDetalle;
+	@Override
+	public String toString() {
+		return "ControlEmpaqueCabecera{" +
+				"id=" + id +
+				", activo=" + activo +
+				", borrado=" + borrado +
+				", creado=" + creado +
+				", idSupervisor=" + idSupervisor +
+				", idAnalista=" + idAnalista +
+				", idLinea=" + idLinea +
+				", idProducto=" + idProducto +
+				", idTurno=" + idTurno +
+				", idMaquina=" + idMaquina +
+				", lote='" + lote + '\'' +
+				'}';
 	}
-
-	public ControlEmpaqueDetalle removeControlEmpaqueDetalle(ControlEmpaqueDetalle controlEmpaqueDetalle) {
-		getControlEmpaqueDetalles().remove(controlEmpaqueDetalle);
-		controlEmpaqueDetalle.setControlEmpaqueCabecera(null);
-
-		return controlEmpaqueDetalle;
-	}
-
 }

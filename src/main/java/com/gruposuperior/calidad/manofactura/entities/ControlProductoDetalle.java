@@ -31,6 +31,9 @@ public class ControlProductoDetalle implements Serializable {
 	@Column(name="id")
 	private int id;
 
+	@Column(name="id_control_producto_cabecera")
+	private int idControlProductoCabecera;
+
 	@Column(name="activo")
 	private boolean activo;
 
@@ -56,11 +59,6 @@ public class ControlProductoDetalle implements Serializable {
 
 	@Column(name="id_parametro")
 	private int idParametro;
-
-	//bi-directional many-to-one association to ControlProductoCabecera
-	@ManyToOne
-	@JoinColumn(name = "id_control_producto_cabecera", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
-	private ControlProductoCabecera controlProductoCabecera;
 
 	public ControlProductoDetalle() {
 	}
@@ -105,10 +103,6 @@ public class ControlProductoDetalle implements Serializable {
 		this.numeroRegistro = numeroRegistro;
 	}
 
-	public ControlProductoCabecera getControlProductoCabecera() {
-		return this.controlProductoCabecera;
-	}
-
 	public Double getValorZona1() {
 		return valorZona1;
 	}
@@ -141,8 +135,12 @@ public class ControlProductoDetalle implements Serializable {
 		this.idParametro = idParametro;
 	}
 
-	public void setControlProductoCabecera(ControlProductoCabecera controlProductoCabecera) {
-		this.controlProductoCabecera = controlProductoCabecera;
+	public int getIdControlProductoCabecera() {
+		return idControlProductoCabecera;
+	}
+
+	public void setIdControlProductoCabecera(int idControlProductoCabecera) {
+		this.idControlProductoCabecera = idControlProductoCabecera;
 	}
 
 }

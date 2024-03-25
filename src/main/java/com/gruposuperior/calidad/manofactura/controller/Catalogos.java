@@ -6,7 +6,6 @@ import com.gruposuperior.calidad.manofactura.dto.response.*;
 import com.gruposuperior.calidad.manofactura.entities.*;
 import com.gruposuperior.calidad.manofactura.service.*;
 import com.gruposuperior.calidad.manofactura.service.ProductoParametroService;
-import com.gruposuperior.calidad.manofactura.service.impl.GuardadoProcesoServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,9 @@ public class Catalogos {
 
 	@Autowired
 	private GuardadoProcesoService guardadoProcesoService;
+
+	@Autowired
+	private GuardadoEmpaqueService guardadoEmpaqueService;
     
     @GetMapping(value = "listar/turno")
     public ResponseEntity<ResponsePaginatedDTO<List<TurnoDTO>>> listarTurnos( 
@@ -375,6 +377,12 @@ public class Catalogos {
 	public ResponseEntity<Boolean> registrarProceso(@RequestBody CabeceraProcesoDTO data){
 		System.out.println("Data controller: " + data);
 		return ResponseEntity.ok(guardadoProcesoService.registroRespuesta(data));
+	}
+
+	@PostMapping("registrarEmpaque")
+	public ResponseEntity<Boolean> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data){
+		System.out.println("Data controller: " + data);
+		return ResponseEntity.ok(guardadoEmpaqueService.registroRespuesta(data));
 	}
 }
 

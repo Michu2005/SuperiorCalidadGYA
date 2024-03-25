@@ -2,9 +2,11 @@ package com.gruposuperior.calidad.manofactura.dto.response;
 
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CabeceraEmpaqueDTO {
+
     @NotBlank
     private int idSupervisor;
 
@@ -23,18 +25,23 @@ public class CabeceraEmpaqueDTO {
     @NotBlank
     private int idMaquina;
 
-    List<DetalleEmpaqueDTO> detalleEmpaqueDTOList;
+    @NotBlank
+    private String lote;
+
+    private List<DetalleEmpaqueDTO> detalleEmpaqueDTOList;
 
     public CabeceraEmpaqueDTO() {
+        this.detalleEmpaqueDTOList = new ArrayList<>();
     }
 
-    public CabeceraEmpaqueDTO(int idSupervisor, int idAnalista, int idTurno, int idLinea, int idProducto, int idMaquina) {
+    public CabeceraEmpaqueDTO(int idSupervisor, int idAnalista, int idTurno, int idLinea, int idProducto, int idMaquina, String lote) {
         this.idSupervisor = idSupervisor;
         this.idAnalista = idAnalista;
         this.idTurno = idTurno;
         this.idLinea = idLinea;
         this.idProducto = idProducto;
         this.idMaquina = idMaquina;
+        this.lote = lote;
     }
 
     public int getIdSupervisor() {
@@ -85,11 +92,33 @@ public class CabeceraEmpaqueDTO {
         this.idMaquina = idMaquina;
     }
 
+    public String getLote() {
+        return lote;
+    }
+
+    public void setLote(String lote) {
+        this.lote = lote;
+    }
+
     public List<DetalleEmpaqueDTO> getDetalleEmpaqueDTOList() {
         return detalleEmpaqueDTOList;
     }
 
     public void setDetalleEmpaqueDTOList(List<DetalleEmpaqueDTO> detalleEmpaqueDTOList) {
         this.detalleEmpaqueDTOList = detalleEmpaqueDTOList;
+    }
+
+    @Override
+    public String toString() {
+        return "CabeceraEmpaqueDTO{" +
+                "idSupervisor=" + idSupervisor +
+                ", idAnalista=" + idAnalista +
+                ", idTurno=" + idTurno +
+                ", idLinea=" + idLinea +
+                ", idProducto=" + idProducto +
+                ", idMaquina=" + idMaquina +
+                ", lote='" + lote + '\'' +
+                ", detalleEmpaqueDTOList=" + detalleEmpaqueDTOList +
+                '}';
     }
 }

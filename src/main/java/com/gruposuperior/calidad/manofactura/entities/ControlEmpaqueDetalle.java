@@ -31,6 +31,9 @@ public class ControlEmpaqueDetalle implements Serializable {
 	@Column(name="id")
 	private int id;
 
+	@Column(name="id_control_empaque_cabecera")
+	private int idControlEmpaqueCabecera;
+
 	@Column(name="activo")
 	private boolean activo;
 
@@ -43,20 +46,19 @@ public class ControlEmpaqueDetalle implements Serializable {
 	private Date creado;
 
 	@Column(name="numero_registro")
-	private short numeroRegistro;
+	private int numeroRegistro;
 
-	@Column(name="valor")
-	private BigDecimal valor;
+	@Column(name="dato_peso_primario")
+	private double datoPesoPrimario;
 
-	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_control_empaque_cabecera")
-	private ControlEmpaqueCabecera controlEmpaqueCabecera;
+	@Column(name="dato_peso_secundario")
+	private double datoPesoSecundario;
 
-	//bi-directional many-to-one association to Parametro
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "id_parametro")
-	private Parametro parametro;
+	@Column(name="dato_peso_corrugado")
+	private double datoPesoCorrugado;
+
+	@Column(name="id_parametro")
+	private int idParametro;
 
 	public ControlEmpaqueDetalle() {
 	}
@@ -93,36 +95,51 @@ public class ControlEmpaqueDetalle implements Serializable {
 		this.creado = creado;
 	}
 
-	public short getNumeroRegistro() {
+	public int getNumeroRegistro() {
 		return this.numeroRegistro;
 	}
 
-	public void setNumeroRegistro(short numeroRegistro) {
+	public void setNumeroRegistro(int numeroRegistro) {
 		this.numeroRegistro = numeroRegistro;
 	}
 
-	public BigDecimal getValor() {
-		return this.valor;
+	public double getDatoPesoPrimario() {
+		return datoPesoPrimario;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setDatoPesoPrimario(double datoPesoPrimario) {
+		this.datoPesoPrimario = datoPesoPrimario;
 	}
 
-	public ControlEmpaqueCabecera getControlEmpaqueCabecera() {
-		return this.controlEmpaqueCabecera;
+	public double getDatoPesoSecundario() {
+		return datoPesoSecundario;
 	}
 
-	public void setControlEmpaqueCabecera(ControlEmpaqueCabecera controlEmpaqueCabecera) {
-		this.controlEmpaqueCabecera = controlEmpaqueCabecera;
+	public void setDatoPesoSecundario(double datoPesoSecundario) {
+		this.datoPesoSecundario = datoPesoSecundario;
 	}
 
-	public Parametro getParametro() {
-		return this.parametro;
+	public double getDatoPesoCorrugado() {
+		return datoPesoCorrugado;
 	}
 
-	public void setParametro(Parametro parametro) {
-		this.parametro = parametro;
+	public void setDatoPesoCorrugado(double datoPesoCorrugado) {
+		this.datoPesoCorrugado = datoPesoCorrugado;
 	}
 
+	public int getIdParametro() {
+		return idParametro;
+	}
+
+	public void setIdParametro(int idParametro) {
+		this.idParametro = idParametro;
+	}
+
+	public int getIdControlEmpaqueCabecera() {
+		return idControlEmpaqueCabecera;
+	}
+
+	public void setIdControlEmpaqueCabecera(int idControlEmpaqueCabecera) {
+		this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;
+	}
 }

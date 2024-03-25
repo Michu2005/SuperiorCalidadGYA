@@ -27,8 +27,8 @@ public class GuardadoProcesoServiceImpl implements GuardadoProcesoService {
         System.out.println("Desde el servicio: " +data);
         ControlProductoCabecera controlProductoCabecera = new ControlProductoCabecera();
         controlProductoCabecera.setActivo(true);
-        controlProductoCabecera.setCreado(new Date());
         controlProductoCabecera.setIdSupervisor(data.getIdSupervisor());
+        controlProductoCabecera.setCreado(new Date());
         controlProductoCabecera.setIdAnalista(data.getIdAnalista());
         controlProductoCabecera.setIdLinea(data.getIdLinea());
         controlProductoCabecera.setIdProducto(data.getIdProducto());
@@ -41,6 +41,7 @@ public class GuardadoProcesoServiceImpl implements GuardadoProcesoService {
                 int i = 1;
                 for (DetalleProcesoDTO detalleProcesoDTO : data.getDetalleProcesoDTOList()){
                     ControlProductoDetalle controlProductoDetalle = new ControlProductoDetalle();
+                    controlProductoDetalle.setIdControlProductoCabecera(controlProductoCabecera.getId());
                     controlProductoDetalle.setActivo(true);
                     controlProductoDetalle.setCreado(new Date());
                     controlProductoDetalle.setNumeroRegistro(i);
@@ -55,6 +56,7 @@ public class GuardadoProcesoServiceImpl implements GuardadoProcesoService {
             }
             return true;
         }catch (Exception e){
+            System.out.println(e + "esta es la excepcion");
             return false;
         }
     }
