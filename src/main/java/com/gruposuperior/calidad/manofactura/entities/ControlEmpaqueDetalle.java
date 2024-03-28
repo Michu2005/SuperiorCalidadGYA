@@ -57,6 +57,18 @@ public class ControlEmpaqueDetalle implements Serializable {
 	@Column(name="dato_peso_corrugado")
 	private double datoPesoCorrugado;
 
+	@Column(name="dato_peso_galleta_rota")
+	private double datoPesoGalletaRota;
+
+	@Column(name="dato_peso_galleta_rota_calculado")
+	private double datoPesoGalletaRotaCalculado;
+
+	@Column(name="dato_peso_primario_galleta_rota")
+	private double datoPesoPrimarioGalletaRota;
+
+	@Column(name="dato_peso_primario_hermeticidad")
+	private double datoPesoPrimarioHermeticidad;
+
 	@Column(name="id_parametro")
 	private int idParametro;
 
@@ -141,5 +153,37 @@ public class ControlEmpaqueDetalle implements Serializable {
 
 	public void setIdControlEmpaqueCabecera(int idControlEmpaqueCabecera) {
 		this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;
+	}
+
+	public double getDatoPesoGalletaRota() {
+		return datoPesoGalletaRota;
+	}
+
+	public void setDatoPesoGalletaRota(double datoPesoGalletaRota) {
+		this.datoPesoGalletaRota = datoPesoGalletaRota;
+	}
+
+	public double getDatoPesoGalletaRotaCalculado() {
+		return datoPesoGalletaRotaCalculado;
+	}
+
+	public void setDatoPesoGalletaRotaCalculado(double datoPesoGalletaRotaCalculado) {
+		this.datoPesoGalletaRotaCalculado = datoPesoGalletaRotaCalculado;
+	}
+
+	public double getDatoPesoPrimarioHermeticidad() {
+		return datoPesoPrimarioHermeticidad;
+	}
+
+	public void setDatoPesoPrimarioHermeticidad(double datoPesoPrimarioHermeticidad) {
+		this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
+	}
+
+	public double getDatoPesoPrimarioGalletaRota() {
+		return datoPesoPrimarioGalletaRota;
+	}
+
+	public void setDatoPesoPrimarioGalletaRota(double datoPesoPrimarioGalletaRota) {
+		this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
 	}
 }

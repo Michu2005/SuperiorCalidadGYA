@@ -16,17 +16,20 @@ public class DetalleEmpaqueDTO {
     @NotBlank
     private Double datoPesoCorrugado;
 
+    private Double datoPesoPrimarioHermeticidad;
+
     @NotBlank
     private int idControlEmpaqueCabecera;
 
     public DetalleEmpaqueDTO() {
     }
 
-    public DetalleEmpaqueDTO(int idParametro, Double datoPesoPrimario, Double datoPesoSecundario, Double datoPesoCorrugado, int idControlEmpaqueCabecera) {
+    public DetalleEmpaqueDTO(int idParametro, Double datoPesoPrimario, Double datoPesoSecundario, Double datoPesoCorrugado) {
         this.idParametro = idParametro;
         this.datoPesoPrimario = datoPesoPrimario;
         this.datoPesoSecundario = datoPesoSecundario;
         this.datoPesoCorrugado = datoPesoCorrugado;
+        this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
         this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;
     }
 
@@ -69,4 +72,14 @@ public class DetalleEmpaqueDTO {
     public void setIdControlEmpaqueCabecera(int idControlEmpaqueCabecera) {
         this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;
     }
+
+    public Double getDatoPesoPrimarioHermeticidad() {
+        return datoPesoPrimarioHermeticidad;
+    }
+
+    public void setDatoPesoPrimarioHermeticidad(Double datoPesoPrimarioHermeticidad) {
+        this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
+    }
+
+
 }

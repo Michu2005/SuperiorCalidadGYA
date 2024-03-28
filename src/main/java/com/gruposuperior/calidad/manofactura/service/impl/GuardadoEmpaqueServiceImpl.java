@@ -11,20 +11,23 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
 
     @Autowired
     private ControlEmpaqueCabeceraRepository controlEmpaqueCabeceraRepository;
+
     @Autowired
     private ControlEmpaqueDetalleRepository controlEmpaqueDetalleRepository;
 
     @Override
     @Transactional
-    public Boolean registroRespuesta(CabeceraEmpaqueDTO data) {
-        System.out.println("Desde el servicio: " +data);
+    public List<Integer> registroRespuesta(CabeceraEmpaqueDTO data) {
+        List<Integer> idsGuardados = new ArrayList<>();
         ControlEmpaqueCabecera controlEmpaqueCabecera = new ControlEmpaqueCabecera();
         controlEmpaqueCabecera.setActivo(true);
         controlEmpaqueCabecera.setIdSupervisor(data.getIdSupervisor());
@@ -37,29 +40,26 @@ public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
         controlEmpaqueCabecera.setLote(data.getLote());
 
         try {
-            System.out.println(controlEmpaqueCabecera);
             ControlEmpaqueCabecera respuesta = controlEmpaqueCabeceraRepository.save(controlEmpaqueCabecera);
-            if (respuesta != null){
-                int i = 1;
-                for (DetalleEmpaqueDTO detalleEmpaqueDTO : data.getDetalleEmpaqueDTOList()){
+            if (respuesta != null) {
+                // Guardar los detalles iniciales de empaque
+                for (DetalleEmpaqueDTO detalleEmpaqueDTO : data.getDetalleEmpaqueDTOList()) {
                     ControlEmpaqueDetalle controlEmpaqueDetalle = new ControlEmpaqueDetalle();
-                    controlEmpaqueDetalle.setIdControlEmpaqueCabecera(controlEmpaqueCabecera.getId());
+                    controlEmpaqueDetalle.setIdControlEmpaqueCabecera(respuesta.getId()); // Usar el ID de la cabecera guardada
                     controlEmpaqueDetalle.setActivo(true);
                     controlEmpaqueDetalle.setCreado(new Date());
-                    controlEmpaqueDetalle.setNumeroRegistro(i);
+                    controlEmpaqueDetalle.setNumeroRegistro(detalleEmpaqueDTO.getIdControlEmpaqueCabecera()); // Usar el número de registro proporcionado
                     controlEmpaqueDetalle.setDatoPesoPrimario(detalleEmpaqueDTO.getDatoPesoPrimario());
                     controlEmpaqueDetalle.setDatoPesoSecundario(detalleEmpaqueDTO.getDatoPesoSecundario());
                     controlEmpaqueDetalle.setDatoPesoCorrugado(detalleEmpaqueDTO.getDatoPesoCorrugado());
                     controlEmpaqueDetalle.setIdParametro(detalleEmpaqueDTO.getIdParametro());
-                    controlEmpaqueDetalleRepository.save(controlEmpaqueDetalle);
-                    i++;
+                    ControlEmpaqueDetalle detalleGuardado = controlEmpaqueDetalleRepository.save(controlEmpaqueDetalle);
+                    idsGuardados.add(detalleGuardado.getId());
                 }
-                i=1;
             }
-            return true;
-        }catch (Exception e){
-            System.out.println("Error: "+e);
-            return false;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
         }
+        return idsGuardados;
     }
 }

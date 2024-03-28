@@ -380,10 +380,15 @@ public class Catalogos {
 	}
 
 	@PostMapping("registrarEmpaque")
-	public ResponseEntity<Boolean> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data){
-		System.out.println("Data controller: " + data);
-		return ResponseEntity.ok(guardadoEmpaqueService.registroRespuesta(data));
+	public ResponseEntity<List<Integer>> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data) {
+		List<Integer> idsRegistrados = guardadoEmpaqueService.registroRespuesta(data);
+		if (idsRegistrados != null && !idsRegistrados.isEmpty()) {
+			return ResponseEntity.ok(idsRegistrados);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
+
 }
 
 
