@@ -16,20 +16,31 @@ public class DetalleEmpaqueDTO {
     @NotBlank
     private Double datoPesoCorrugado;
 
-    private Double datoPesoPrimarioHermeticidad;
+    @NotBlank
+    private Double datoPesoGalletaRota;
 
     @NotBlank
+    private Double datoGalletaRotaCalculado;
+
+    @NotBlank
+    private Double datoPesoPrimarioGalletaRota;
+
+    @NotBlank
+    private String datoPesoPrimarioHermeticidad;
+
     private int idControlEmpaqueCabecera;
 
     public DetalleEmpaqueDTO() {
     }
 
-    public DetalleEmpaqueDTO(int idParametro, Double datoPesoPrimario, Double datoPesoSecundario, Double datoPesoCorrugado) {
+    public DetalleEmpaqueDTO(int idParametro, Double datoPesoPrimario, Double datoPesoSecundario, Double datoPesoCorrugado, Double datoPesoGalletaRota, Double datoGalletaRotaCalculado, Double datoPesoPrimarioGalletaRota, int idControlEmpaqueCabecera) {
         this.idParametro = idParametro;
         this.datoPesoPrimario = datoPesoPrimario;
         this.datoPesoSecundario = datoPesoSecundario;
         this.datoPesoCorrugado = datoPesoCorrugado;
-        this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
+        this.datoPesoGalletaRota = datoPesoGalletaRota;
+        this.datoGalletaRotaCalculado = datoGalletaRotaCalculado;
+        this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
         this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;
     }
 
@@ -73,13 +84,35 @@ public class DetalleEmpaqueDTO {
         this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;
     }
 
-    public Double getDatoPesoPrimarioHermeticidad() {
+    public String getDatoPesoPrimarioHermeticidad() {
         return datoPesoPrimarioHermeticidad;
     }
 
-    public void setDatoPesoPrimarioHermeticidad(Double datoPesoPrimarioHermeticidad) {
+    public void setDatoPesoPrimarioHermeticidad(String datoPesoPrimarioHermeticidad) {
         this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
     }
 
+    public Double getDatoPesoGalletaRota() {
+        return datoPesoGalletaRota;
+    }
 
+    public void setDatoPesoGalletaRota(Double datoPesoGalletaRota) {
+        this.datoPesoGalletaRota = datoPesoGalletaRota;
+    }
+
+    public Double getDatoGalletaRotaCalculado() {
+        return datoGalletaRotaCalculado;
+    }
+
+    public void setDatoGalletaRotaCalculado(Double datoGalletaRotaCalculado) {
+        this.datoGalletaRotaCalculado = datoGalletaRotaCalculado;
+    }
+
+    public Double getDatoPesoPrimarioGalletaRota() {
+        return datoPesoPrimarioGalletaRota;
+    }
+
+    public void setDatoPesoPrimarioGalletaRota(Double datoPesoPrimarioGalletaRota) {
+        this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
+    }
 }

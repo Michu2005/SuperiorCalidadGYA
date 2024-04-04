@@ -12,12 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
 import com.gruposuperior.calidad.manofactura.dto.ResponsePaginatedDTO;
@@ -380,15 +375,24 @@ public class Catalogos {
 	}
 
 	@PostMapping("registrarEmpaque")
-	public ResponseEntity<List<Integer>> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data) {
-		List<Integer> idsRegistrados = guardadoEmpaqueService.registroRespuesta(data);
-		if (idsRegistrados != null && !idsRegistrados.isEmpty()) {
-			return ResponseEntity.ok(idsRegistrados);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	public ResponseEntity<List<Integer>> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data){
+		return ResponseEntity.ok(guardadoEmpaqueService.registroRespuesta(data));
 	}
 
+	@PutMapping("registrarGalletaRota")
+	public ResponseEntity<Boolean> registrarGalletaRota(@RequestBody List<DetalleEmpaqueGalletaRotaDTO> data){
+		return ResponseEntity.ok(guardadoEmpaqueService.registrarGalletaRota(data));
+	}
+
+	@PutMapping("registrarHermeticidad")
+	public ResponseEntity<Boolean> registrarHermeticidad(@RequestBody List<DetalleEmpaqueHermeticidadDTO> data){
+		return ResponseEntity.ok(guardadoEmpaqueService.registrarHermeticidad(data));
+	}
+
+	/*@PutMapping("registrarParametrosAdicionales")
+	public ResponseEntity<Boolean> registrarParametrosAdicionales(@RequestBody List<ParametrosAdicionalesDTO> data){
+		return ResponseEntity.ok(guardadoEmpaqueService.registrarParametrosAdicionales(data));
+	}*/
 }
 
 

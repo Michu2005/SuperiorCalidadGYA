@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 public class DetalleEmpaqueGalletaRotaDTO {
 
     @NotBlank
+    private Integer idGuardado;
+
+    @NotBlank
     private Double datoPesoGalletaRota;
 
     @NotBlank
@@ -16,7 +19,8 @@ public class DetalleEmpaqueGalletaRotaDTO {
     public DetalleEmpaqueGalletaRotaDTO() {
     }
 
-    public DetalleEmpaqueGalletaRotaDTO(Double datoPesoGalletaRota, Double datoPesoGalletaRotaCalculado, Double datoPesoPrimarioGalletaRota) {
+    public DetalleEmpaqueGalletaRotaDTO(Integer idGuardado, Double datoPesoGalletaRota, Double datoPesoGalletaRotaCalculado, Double datoPesoPrimarioGalletaRota) {
+        this.idGuardado = idGuardado;
         this.datoPesoGalletaRota = datoPesoGalletaRota;
         this.datoPesoGalletaRotaCalculado = datoPesoGalletaRotaCalculado;
         this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
@@ -44,5 +48,23 @@ public class DetalleEmpaqueGalletaRotaDTO {
 
     public void setDatoPesoPrimarioGalletaRota(Double datoPesoPrimarioGalletaRota) {
         this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
+    }
+
+    public Integer getIdGuardado() {
+        return idGuardado;
+    }
+
+    public void setIdGuardado(Integer idGuardado) {
+        this.idGuardado = idGuardado;
+    }
+
+    @Override
+    public String toString() {
+        return "DetalleEmpaqueGalletaRotaDTO{" +
+                "idGuardado=" + idGuardado +
+                ", datoPesoGalletaRota=" + datoPesoGalletaRota +
+                ", datoPesoGalletaRotaCalculado=" + datoPesoGalletaRotaCalculado +
+                ", datoPesoPrimarioGalletaRota=" + datoPesoPrimarioGalletaRota +
+                '}';
     }
 }

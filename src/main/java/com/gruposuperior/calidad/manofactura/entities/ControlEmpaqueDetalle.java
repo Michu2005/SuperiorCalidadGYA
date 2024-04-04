@@ -60,14 +60,14 @@ public class ControlEmpaqueDetalle implements Serializable {
 	@Column(name="dato_peso_galleta_rota")
 	private double datoPesoGalletaRota;
 
-	@Column(name="dato_peso_galleta_rota_calculado")
-	private double datoPesoGalletaRotaCalculado;
+	@Column(name="dato_galleta_rota_calculado")
+	private double datoGalletaRotaCalculado;
 
 	@Column(name="dato_peso_primario_galleta_rota")
 	private double datoPesoPrimarioGalletaRota;
 
-	@Column(name="dato_peso_primario_hermeticidad")
-	private double datoPesoPrimarioHermeticidad;
+	@Column(name="dato_hermeticidad")
+	private String datoHermeticidad;
 
 	@Column(name="id_parametro")
 	private int idParametro;
@@ -163,20 +163,20 @@ public class ControlEmpaqueDetalle implements Serializable {
 		this.datoPesoGalletaRota = datoPesoGalletaRota;
 	}
 
-	public double getDatoPesoGalletaRotaCalculado() {
-		return datoPesoGalletaRotaCalculado;
+	public double getDatoGalletaRotaCalculado() {
+		return datoGalletaRotaCalculado;
 	}
 
-	public void setDatoPesoGalletaRotaCalculado(double datoPesoGalletaRotaCalculado) {
-		this.datoPesoGalletaRotaCalculado = datoPesoGalletaRotaCalculado;
+	public void setDatoGalletaRotaCalculado(double datoGalletaRotaCalculado) {
+		this.datoGalletaRotaCalculado = datoGalletaRotaCalculado;
 	}
 
-	public double getDatoPesoPrimarioHermeticidad() {
-		return datoPesoPrimarioHermeticidad;
+	public String getHermeticidad() {
+		return datoHermeticidad;
 	}
 
-	public void setDatoPesoPrimarioHermeticidad(double datoPesoPrimarioHermeticidad) {
-		this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
+	public void setDatoHermeticidad(String datoHermeticidad) {
+		this.datoHermeticidad = datoHermeticidad;
 	}
 
 	public double getDatoPesoPrimarioGalletaRota() {
@@ -186,4 +186,9 @@ public class ControlEmpaqueDetalle implements Serializable {
 	public void setDatoPesoPrimarioGalletaRota(double datoPesoPrimarioGalletaRota) {
 		this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
 	}
+
+	public String getDatoHermeticidad() {
+		return datoHermeticidad;
+	}
+
 }
