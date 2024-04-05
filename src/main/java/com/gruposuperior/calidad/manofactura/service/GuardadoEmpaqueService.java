@@ -1,9 +1,9 @@
 package com.gruposuperior.calidad.manofactura.service;
 
-import com.gruposuperior.calidad.manofactura.dto.response.CabeceraProcesoDTO;
+import com.gruposuperior.calidad.manofactura.dto.response.CabeceraEmpaqueDTO;
 
 public interface GuardadoEmpaqueService {
 
-    Boolean registroRespuesta(CabeceraProcesoDTO data);
+    Boolean registroRespuesta(CabeceraEmpaqueDTO data);
 
 }

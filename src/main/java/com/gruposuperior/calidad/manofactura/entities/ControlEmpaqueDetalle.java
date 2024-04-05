@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -45,16 +46,38 @@ public class ControlEmpaqueDetalle implements Serializable {
 	@Column(name="numero_registro")
 	private short numeroRegistro;
 
-	@Column(name="valor")
-	private BigDecimal valor;
+    @Column(name = "dato_peso_primario")
+    private Double datoPesoPrimario;
+
+    @Column(name = "dato_peso_secundario")
+    private Double datoPesoSecundario;
+
+    @Column(name = "dato_peso_corrugado")
+    private Double datoPesoCorrugado;
+
+    @Column(name = "dato_peso_galleta_rota")
+    private Double datoPesoGalletaRota;
+
+    @Column(name = "dato_peso_galleta_rota_calculado")
+    private Double datoPesoGalletaRotaCalcualado;
+
+    @Column(name = "dato_peso_primario_galleta_rota")
+    private Double datoPesoPrimarioGalletaRota;
+
+    @Column(name = "dato_peso_primario_hermeticidad")
+    private Double datoPesoPrimarioHermeticidad;
+
+    @Column(name = "dato_peso_primario_parametro_adic")
+    private Double datoPesoPrimarioParametroAdic;
+
 
 	//bi-directional many-to-one association to ControlEmpaqueCabecera
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_control_empaque_cabecera")
 	private ControlEmpaqueCabecera controlEmpaqueCabecera;
 
 	//bi-directional many-to-one association to Parametro
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_parametro")
 	private Parametro parametro;
 
@@ -101,13 +124,6 @@ public class ControlEmpaqueDetalle implements Serializable {
 		this.numeroRegistro = numeroRegistro;
 	}
 
-	public BigDecimal getValor() {
-		return this.valor;
-	}
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
 
 	public ControlEmpaqueCabecera getControlEmpaqueCabecera() {
 		return this.controlEmpaqueCabecera;
@@ -124,5 +140,69 @@ public class ControlEmpaqueDetalle implements Serializable {
 	public void setParametro(Parametro parametro) {
 		this.parametro = parametro;
 	}
+
+    public Double getDatoPesoPrimario() {
+        return datoPesoPrimario;
+    }
+
+    public void setDatoPesoPrimario(Double datoPesoPrimario) {
+        this.datoPesoPrimario = datoPesoPrimario;
+    }
+
+    public Double getDatoPesoSecundario() {
+        return datoPesoSecundario;
+    }
+
+    public void setDatoPesoSecundario(Double datoPesoSecundario) {
+        this.datoPesoSecundario = datoPesoSecundario;
+    }
+
+    public Double getDatoPesoCorrugado() {
+        return datoPesoCorrugado;
+    }
+
+    public void setDatoPesoCorrugado(Double datoPesoCorrugado) {
+        this.datoPesoCorrugado = datoPesoCorrugado;
+    }
+
+    public Double getDatoPesoGalletaRota() {
+        return datoPesoGalletaRota;
+    }
+
+    public void setDatoPesoGalletaRota(Double datoPesoGalletaRota) {
+        this.datoPesoGalletaRota = datoPesoGalletaRota;
+    }
+
+    public Double getDatoPesoGalletaRotaCalcualado() {
+        return datoPesoGalletaRotaCalcualado;
+    }
+
+    public void setDatoPesoGalletaRotaCalcualado(Double datoPesoGalletaRotaCalcualado) {
+        this.datoPesoGalletaRotaCalcualado = datoPesoGalletaRotaCalcualado;
+    }
+
+    public Double getDatoPesoPrimarioGalletaRota() {
+        return datoPesoPrimarioGalletaRota;
+    }
+
+    public void setDatoPesoPrimarioGalletaRota(Double datoPesoPrimarioGalletaRota) {
+        this.datoPesoPrimarioGalletaRota = datoPesoPrimarioGalletaRota;
+    }
+
+    public Double getDatoPesoPrimarioHermeticidad() {
+        return datoPesoPrimarioHermeticidad;
+    }
+
+    public void setDatoPesoPrimarioHermeticidad(Double datoPesoPrimarioHermeticidad) {
+        this.datoPesoPrimarioHermeticidad = datoPesoPrimarioHermeticidad;
+    }
+
+    public Double getDatoPesoPrimarioParametroAdic() {
+        return datoPesoPrimarioParametroAdic;
+    }
+
+    public void setDatoPesoPrimarioParametroAdic(Double datoPesoPrimarioParametroAdic) {
+        this.datoPesoPrimarioParametroAdic = datoPesoPrimarioParametroAdic;
+    }
 
 }

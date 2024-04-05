@@ -1,11 +1,22 @@
 package com.gruposuperior.calidad.manofactura.dto.response;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import jakarta.validation.constraints.NotBlank;
 
 public class DetalleProcesoDTO {
 
     @NotBlank
+    private int id;
+
+    @NotBlank
+    private int idCabeceraProceso;
+
+    @NotBlank
     private int idParametro;
+    @NotBlank
+    private int numeroRegistro;
 
     @NotBlank
     private Double valorZona1;
@@ -15,6 +26,24 @@ public class DetalleProcesoDTO {
 
     @NotBlank
     private Double valorZona3;
+    @NotBlank
+    private boolean activo;
+
+    @NotBlank
+    private Date borrado;
+
+    @NotBlank
+    private Date creado;
+
+    // DTO
+    @NotBlank
+    private String descripcionParametro;
+    @NotBlank
+    private BigDecimal min;
+    @NotBlank
+    private BigDecimal max;
+    @NotBlank
+    private String descripcionProceso;
 
     public DetalleProcesoDTO() {
     }
@@ -56,6 +85,86 @@ public class DetalleProcesoDTO {
 
     public void setValorZona3(Double valorZona3) {
         this.valorZona3 = valorZona3;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdCabeceraProceso() {
+        return idCabeceraProceso;
+    }
+
+    public void setIdCabeceraProceso(int idCabeceraProceso) {
+        this.idCabeceraProceso = idCabeceraProceso;
+    }
+
+    public int getNumeroRegistro() {
+        return numeroRegistro;
+    }
+
+    public void setNumeroRegistro(int numeroRegistro) {
+        this.numeroRegistro = numeroRegistro;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public Date getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(Date borrado) {
+        this.borrado = borrado;
+    }
+
+    public Date getCreado() {
+        return creado;
+    }
+
+    public void setCreado(Date creado) {
+        this.creado = creado;
+    }
+
+    public String getDescripcionParametro() {
+        return descripcionParametro;
+    }
+
+    public void setDescripcionParametro(String descripcionParametro) {
+        this.descripcionParametro = descripcionParametro;
+    }
+
+    public BigDecimal getMin() {
+        return min;
+    }
+
+    public void setMin(BigDecimal min) {
+        this.min = min;
+    }
+
+    public BigDecimal getMax() {
+        return max;
+    }
+
+    public void setMax(BigDecimal max) {
+        this.max = max;
+    }
+
+    public String getDescripcionProceso() {
+        return descripcionProceso;
+    }
+
+    public void setDescripcionProceso(String descripcionProceso) {
+        this.descripcionProceso = descripcionProceso;
     }
 
 }

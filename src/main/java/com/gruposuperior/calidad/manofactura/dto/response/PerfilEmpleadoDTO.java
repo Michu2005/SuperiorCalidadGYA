@@ -1,7 +1,5 @@
 package com.gruposuperior.calidad.manofactura.dto.response;
 
-import jakarta.validation.constraints.NotBlank;
-
 public class PerfilEmpleadoDTO {
 
     private int id;

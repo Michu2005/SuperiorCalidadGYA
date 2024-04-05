@@ -4,14 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -61,8 +60,11 @@ public class ControlEmpaqueCabecera implements Serializable {
 	@Column(name="id_maquina")
 	private Double idMaquina;
 
+    @Column(name="lote")
+	private String lote;
+
 	//bi-directional many-to-one association to ControlEmpaqueDetalle
-	@OneToMany(mappedBy="controlEmpaqueCabecera")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="controlEmpaqueCabecera", cascade = CascadeType.ALL)
 	private List<ControlEmpaqueDetalle> controlEmpaqueDetalles;
 
 	public ControlEmpaqueCabecera() {
@@ -168,6 +170,14 @@ public class ControlEmpaqueCabecera implements Serializable {
 		controlEmpaqueDetalle.setControlEmpaqueCabecera(null);
 
 		return controlEmpaqueDetalle;
+	}
+
+    public String getLote() {
+		return lote;
+	}
+
+	public void setLote(String lote) {
+		this.lote = lote;
 	}
 
 }

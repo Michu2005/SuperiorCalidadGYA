@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gruposuperior.calidad.manofactura.entities.Producto;
 
-import java.util.List;
-import java.util.Optional;
-
 @Repository("productoRepository")
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
-    Optional<Producto> findById(int id);
+   
 }

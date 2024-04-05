@@ -6,7 +6,6 @@ import com.gruposuperior.calidad.manofactura.dto.ResponseDTO;
 import com.gruposuperior.calidad.manofactura.dto.ResponsePaginatedDTO;
 import com.gruposuperior.calidad.manofactura.dto.response.EmpleadoDTO;
 import com.gruposuperior.calidad.manofactura.entities.Empleado;
-import com.gruposuperior.calidad.manofactura.repositories.EmpleadoRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,4 +16,5 @@ public interface EmpleadoService {
 	public List<EmpleadoDTO> listarSac(int idPerfil);
 	public List<EmpleadoDTO> listarAac(int idPerfil);
 	public Integer getIdEmpleado(String codigo);
+    public EmpleadoDTO listarAnalistaPorSupervisor(String codigo);
 }
