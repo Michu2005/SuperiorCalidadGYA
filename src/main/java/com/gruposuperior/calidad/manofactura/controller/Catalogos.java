@@ -375,7 +375,7 @@ public class Catalogos {
 	}
 
 	@PostMapping("registrarEmpaque")
-	public ResponseEntity<List<Integer>> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data){
+	public ResponseEntity<RespuestaDTO> registrarEmpaque(@RequestBody CabeceraEmpaqueDTO data){
 		return ResponseEntity.ok(guardadoEmpaqueService.registroRespuesta(data));
 	}
 
@@ -389,10 +389,10 @@ public class Catalogos {
 		return ResponseEntity.ok(guardadoEmpaqueService.registrarHermeticidad(data));
 	}
 
-	/*@PutMapping("registrarParametrosAdicionales")
+	@PutMapping("registrarParametrosAdicionales")
 	public ResponseEntity<Boolean> registrarParametrosAdicionales(@RequestBody List<ParametrosAdicionalesDTO> data){
 		return ResponseEntity.ok(guardadoEmpaqueService.registrarParametrosAdicionales(data));
-	}*/
+	}
 }
 
 

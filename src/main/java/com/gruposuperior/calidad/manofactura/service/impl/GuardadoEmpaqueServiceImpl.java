@@ -6,6 +6,7 @@ import com.gruposuperior.calidad.manofactura.entities.ControlEmpaqueDetalle;
 import com.gruposuperior.calidad.manofactura.entities.ParametrosAdicionales;
 import com.gruposuperior.calidad.manofactura.repositories.ControlEmpaqueCabeceraRepository;
 import com.gruposuperior.calidad.manofactura.repositories.ControlEmpaqueDetalleRepository;
+import com.gruposuperior.calidad.manofactura.repositories.ParametrosAdicionalesRepository;
 import com.gruposuperior.calidad.manofactura.service.GuardadoEmpaqueService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,19 @@ public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
 
     @Autowired
     private ControlEmpaqueCabeceraRepository controlEmpaqueCabeceraRepository;
+
     @Autowired
     private ControlEmpaqueDetalleRepository controlEmpaqueDetalleRepository;
 
+    @Autowired
+    private ParametrosAdicionalesRepository parametrosAdicionalesRepository;
+
     @Override
     @Transactional
-    public List<Integer> registroRespuesta(CabeceraEmpaqueDTO data) {
+    public  RespuestaDTO registroRespuesta(CabeceraEmpaqueDTO data) {
+        RespuestaDTO respuestaDTO = new RespuestaDTO();
         List<Integer> idGuardados = new ArrayList<>();
+
         ControlEmpaqueCabecera controlEmpaqueCabecera = new ControlEmpaqueCabecera();
         controlEmpaqueCabecera.setActivo(true);
         controlEmpaqueCabecera.setIdSupervisor(data.getIdSupervisor());
@@ -58,12 +65,15 @@ public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
                     idGuardados.add(respuestaRegistroDetalle.getId());
                     i++;
                 }
-
             }
-            return idGuardados;
+            respuestaDTO.setIdControlEmpaqueCabecera(respuesta.getId());
+            respuestaDTO.setIdGuardados(idGuardados);
+            return respuestaDTO;
         } catch (Exception e) {
             System.out.println("Error en guardar detalles de empaque: " + e);
-            return idGuardados;
+            respuestaDTO.setIdControlEmpaqueCabecera(null); // En caso de error, no hay ID de cabecera
+            respuestaDTO.setIdGuardados(idGuardados);
+            return respuestaDTO;
         }
     }
 
@@ -95,6 +105,7 @@ public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
                 Optional<ControlEmpaqueDetalle> registroBuscado = controlEmpaqueDetalleRepository.findById(detalle.getIdGuardado());
                 if (registroBuscado.isPresent()){
                     ControlEmpaqueDetalle registroActualizado = registroBuscado.get();
+                    registroActualizado.setIdControlEmpaqueCabecera(detalle.getIdControlEmpaqueCabecera());
                     registroActualizado.setDatoHermeticidad(detalle.getDatoHermeticidad());
                     controlEmpaqueDetalleRepository.save(registroActualizado);
                 }
@@ -106,14 +117,15 @@ public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
         }
     }
 
-    /*@Override
+    @Override
     public Boolean registrarParametrosAdicionales(List<ParametrosAdicionalesDTO> data) {
         try{
             for (ParametrosAdicionalesDTO detalle : data){
-                Optional<ControlEmpaqueDetalle> registroBuscado = controlEmpaqueDetalleRepository.findById(detalle.getIdControlEmpaqueCabecera());
+                Optional<ParametrosAdicionales> registroBuscado = parametrosAdicionalesRepository.findById(detalle.getIdControlEmpaqueCabecera());
                 if (registroBuscado.isPresent()){
-                    ControlEmpaqueDetalle registroActualizado = registroBuscado.get();
-                    controlEmpaqueDetalleRepository.save(registroActualizado);
+                    ParametrosAdicionales registroActualizado = registroBuscado.get();
+                    registroActualizado.setDatoParamAdicionales(detalle.getDatoParamAdicionales());
+                    parametrosAdicionalesRepository.save(registroActualizado);
                 }
             }
             return true;
@@ -121,5 +133,5 @@ public class GuardadoEmpaqueServiceImpl implements GuardadoEmpaqueService {
             System.out.println("Error al guardar detalles de parametros adicionales: "+ e);
             return false;
         }
-    }*/
+    }
 }

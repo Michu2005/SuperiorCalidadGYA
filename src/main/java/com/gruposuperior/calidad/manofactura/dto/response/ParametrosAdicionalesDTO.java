@@ -9,8 +9,7 @@ public class ParametrosAdicionalesDTO {
     private Integer idParametro;
     private Double datoParamAdicionales;
 
-    public ParametrosAdicionalesDTO() {
-    }
+    public ParametrosAdicionalesDTO() {}
 
     public ParametrosAdicionalesDTO(Integer idControlEmpaqueCabecera, Double datoParamAdicionales) {
         this.idControlEmpaqueCabecera = idControlEmpaqueCabecera;

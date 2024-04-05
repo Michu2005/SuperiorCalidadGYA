@@ -20,7 +20,7 @@ public class ParametrosAdicionales {
     private int idParametro;
 
     @Column(name="dato_param_adic")
-    private int datoParamAdicionales;
+    private Double datoParamAdicionales;
 
     @Temporal(TemporalType.DATE)
     @Column(name="creado")
@@ -53,11 +53,11 @@ public class ParametrosAdicionales {
         this.idParametro = idParametro;
     }
 
-    public int getDatoParamAdicionales() {
+    public Double getDatoParamAdicionales() {
         return datoParamAdicionales;
     }
 
-    public void setDatoParamAdicionales(int datoParamAdicionales) {
+    public void setDatoParamAdicionales(Double datoParamAdicionales) {
         this.datoParamAdicionales = datoParamAdicionales;
     }
 

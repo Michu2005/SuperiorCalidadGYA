@@ -1,5 +1,6 @@
 package com.gruposuperior.calidad.manofactura.dto.response;
 
+import com.gruposuperior.calidad.manofactura.entities.ParametrosAdicionales;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
@@ -29,10 +30,6 @@ public class CabeceraEmpaqueDTO {
     private String lote;
 
     private List<DetalleEmpaqueDTO> detalleEmpaqueDTOList;
-
-    private List<DetalleEmpaqueGalletaRotaDTO> detalleEmpaqueGalletaRotaDTO;
-
-    //private List<DetalleEmpaqueHermeticidadDTO> detalleEmpaqueHermeticidadDTO;
 
     public CabeceraEmpaqueDTO() {
         this.detalleEmpaqueDTOList = new ArrayList<>();
@@ -111,22 +108,6 @@ public class CabeceraEmpaqueDTO {
     public void setDetalleEmpaqueDTOList(List<DetalleEmpaqueDTO> detalleEmpaqueDTOList) {
         this.detalleEmpaqueDTOList = detalleEmpaqueDTOList;
     }
-
-    public List<DetalleEmpaqueGalletaRotaDTO> getDetalleEmpaqueGalletaRotaDTO() {
-        return detalleEmpaqueGalletaRotaDTO;
-    }
-
-    public void setDetalleEmpaqueGalletaRotaDTO(List<DetalleEmpaqueGalletaRotaDTO> detalleEmpaqueGalletaRotaDTO) {
-        this.detalleEmpaqueGalletaRotaDTO = detalleEmpaqueGalletaRotaDTO;
-    }
-
-    /*public List<DetalleEmpaqueHermeticidadDTO> getDetalleEmpaqueHermeticidadDTO() {
-        return detalleEmpaqueHermeticidadDTO;
-    }
-
-    public void setDetalleEmpaqueHermeticidadDTO(List<DetalleEmpaqueHermeticidadDTO> detalleEmpaqueHermeticidadDTO) {
-        this.detalleEmpaqueHermeticidadDTO = detalleEmpaqueHermeticidadDTO;
-    }*/
 
     @Override
     public String toString() {
